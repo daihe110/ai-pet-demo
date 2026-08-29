@@ -528,6 +528,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
 /* 真实照片与高清图标 */
 .img-cover{width:100%;height:100%;object-fit:cover;display:block}
 .feed-cover img,.mcard .cover img,.cin-item .cover img{width:100%;height:100%;object-fit:cover;display:block}
+img{max-width:100%}
 .photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .pe-photo{position:absolute;right:12px;bottom:10px;width:76px;height:76px;border-radius:22px;overflow:hidden;
   box-shadow:0 8px 18px rgba(255,122,69,.35);border:3px solid #fff;transform:rotate(-4deg)}
@@ -562,6 +563,215 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
   .viewport{border-radius:0}
   .stage-note{display:none}
 }
+</style>
+<style>
+/* ===== AI 极简重构主题 ===== */
+:root{
+  --brand1:#FF7A45; --brand2:#FF4E7A; --ink:#24273A; --muted:#8A90A8;
+  --bg:#F5F7FC; --bg2:#EDF1F9; --card:#FFFFFF; --line:#E8EBF4;
+  --ai1:#6E7BFF; --ai2:#8F6EFF; --ai3:#54C8CE; --mint:#2FBE98; --gold:#F2B64F;
+  --radius:20px;
+  --shadow:0 12px 32px rgba(36,39,58,.07);
+  --shadow-sm:0 6px 18px rgba(36,39,58,.06);
+}
+body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
+.phone{background:#15172A;box-shadow:0 40px 90px rgba(36,39,58,.25),inset 0 0 0 2px #262A45}
+.phone::before{background:#15172A}
+.viewport{background:var(--bg)}
+.homebar.light{background:#DDE2F0}
+
+/* 呼吸感：更宽的留白 */
+.screen{padding:60px 20px 122px}
+.section-title{margin:28px 4px 12px}
+.section-title h3{font-size:15px;font-weight:700;letter-spacing:.2px}
+.section-title a{color:var(--muted)}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid #F0F2F9}
+
+/* 顶栏 */
+.topbar{margin:6px 2px 16px}
+.loc{font-size:14px;font-weight:700;color:var(--ink)}
+.loc span{background:linear-gradient(135deg,rgba(110,123,255,.12),rgba(143,110,255,.12));color:var(--ai1);font-weight:700}
+.iconbtn{background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-radius:12px;box-shadow:var(--shadow-sm);color:#5D6380}
+
+/* 按钮：AI 蓝紫主色 */
+.btn{font-weight:650;border-radius:14px;letter-spacing:.2px}
+.btn-primary{background:linear-gradient(135deg,var(--ai1),var(--ai2));box-shadow:0 10px 22px rgba(110,123,255,.28)}
+.btn-ghost{background:#EEF1FA;color:#4A5070}
+.btn-ghost-light{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.28)}
+
+/* 看电影核心模块：轻盈通透 */
+.movie-hero{
+  background:linear-gradient(135deg,#E9EDFF 0%,#EFF7FA 60%,#EDF1FF 100%);
+  color:#252846;box-shadow:0 18px 40px rgba(110,123,255,.14);border:1px solid #E4E9FF;padding:24px 22px 22px;
+}
+.movie-hero::before{display:none}
+.mh-tag{background:rgba(255,255,255,.68);border:1px solid rgba(110,123,255,.22);color:#5A64C9}
+.mh-tag i{background:#7B87FF;box-shadow:0 0 10px #7B87FF}
+.movie-hero h2{color:#252846;font-size:23px;font-weight:850;line-height:1.42}
+.movie-hero .sub{color:#6E7390}
+.mh-film{color:var(--ai1)}
+.movie-hero .btn-ghost-light{background:rgba(255,255,255,.72);color:#5A64C9;border-color:rgba(110,123,255,.22)}
+.cd-cell{background:rgba(255,255,255,.72);border:1px solid rgba(110,123,255,.16);backdrop-filter:blur(6px);border-radius:12px;padding:8px 0}
+.cd-cell b{color:#3D47A8;font-weight:800}
+.cd-cell span{color:#8A90B5}
+.cd-sep{color:#AEB4D2}
+
+/* 宠物身份卡 */
+.pet-card{background:linear-gradient(135deg,#FFFFFF,#FAFBFF);border:1px solid #EFF1F9}
+.pet-avatar{background:linear-gradient(135deg,#FFEFE6,#F1EBFF);box-shadow:0 8px 18px rgba(110,123,255,.12)}
+.pet-empty{background:linear-gradient(135deg,#EFF2FF,#F0F7F8);border:1px solid #E6EAFF}
+.pet-empty h4{color:#2A2E4D}
+.pet-empty p{color:#7A7F9C}
+.chip{background:#EFF2FC;color:#5A6184}
+.chip.gold{background:#FFF4DE;color:#A9770B}
+.chip.mint{background:#E4F7F2;color:#148F74}
+
+/* 服务九宫格 */
+.svc-grid{gap:12px}
+.svc{border-radius:18px;padding:14px 4px 12px;background:rgba(255,255,255,.9);border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+.svc span{color:#4C5170;font-weight:650}
+.svc .ico{width:40px;height:40px;border-radius:14px}
+.svc.c1 .ico{background:#E8ECFF;color:#5A66E0}.svc.c2 .ico{background:#E0F4F5;color:#1FA6AD}
+.svc.c3 .ico{background:#FFF1DE;color:#D08A16}.svc.c4 .ico{background:#E3F1FF;color:#2F7FD1}
+.svc.c5 .ico{background:#E2F8F1;color:#1C9E7A}.svc.c6 .ico{background:#F3E9FF;color:#8A5CF0}
+.svc.c7 .ico{background:#FDE8EF;color:#E05A84}.svc.c8 .ico{background:#FFF3DE;color:#C88B14}
+
+/* 云市场 */
+.mcard,.feed-card{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm);border-radius:18px}
+.mcard .meta b,.feed-body h5{color:#2A2E4D}
+.pill{background:#fff;color:#626885;border-color:#E8EBF4}
+.pill.on{background:linear-gradient(135deg,var(--ai1),var(--ai2));color:#fff;border-color:transparent}
+.like-btn{background:#F0F3FA;color:#606686}
+.like-btn.liked{background:#FDEBEF;color:#E2445A}
+.dl-btn{background:linear-gradient(135deg,var(--ai1),var(--ai2));box-shadow:0 8px 16px rgba(110,123,255,.22)}
+.asset-card{background:linear-gradient(135deg,#F1F4FF,#F4F8F9);border-color:#DCE4FF}
+.stat-box{background:#fff;border:1px solid #EFF2FA}
+
+/* 成长空间：清爽身份卡 */
+.grow-hero{background:linear-gradient(135deg,#EFF2FF,#F0F8F8);border:1px solid #E6EBFF;padding:16px}
+.gh-photo{border-color:#fff;box-shadow:0 12px 26px rgba(110,123,255,.22)}
+.gh-name h4{color:#2A2E4D}
+.gh-info>p{color:#767C99}
+.gh-tags span{background:rgba(255,255,255,.86);color:#5F6793;border:1px solid #ECEEF8}
+.quick{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm);border-radius:16px}
+.quick span{color:#4C5170}
+
+/* 月报 */
+.report-card{
+  background:linear-gradient(135deg,#F2F4FF,#EFF8F8);color:#2A2E4D;border:1px solid #E6EAFF;
+  box-shadow:var(--shadow-sm);
+}
+.report-card .rc-date{color:#7A7F9C}
+.report-stats .rs{background:rgba(255,255,255,.72);border:1px solid #E8ECF8}
+.report-stats .rs b{color:#3D47A8}
+.report-stats .rs span{color:#8389A4}
+.bars i{background:linear-gradient(to top,#6E7BFF,#A6AFFF)}
+.report-card p{color:#767C99!important}
+.report-card::after{display:none}
+
+/* 那年今日 */
+.memory-card{background:linear-gradient(135deg,#FFF7EE,#F1F3FF);border:1px solid #F4EBDD}
+.timeline::before{background:#E4E8F4}
+.tl-item::before{border-color:var(--ai1);box-shadow:0 0 0 3px #E8ECFF}
+.tl-item.g::before{border-color:var(--mint);box-shadow:0 0 0 3px #E4F7F2}
+.tl-item.b::before{border-color:var(--gold);box-shadow:0 0 0 3px #FFF4DE}
+.tl-box{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+
+/* 我的 */
+.me-profile{background:linear-gradient(135deg,#F1F4FF,#EEF8F8);border:1px solid #E6EBFF}
+.me-profile p{color:#767C99}
+.me-ava{box-shadow:0 8px 18px rgba(110,123,255,.2)}
+.me-list{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+.me-row{border-bottom:1px solid #F0F2F9}
+.me-row .txt b{color:#2A2E4D}
+.me-row .txt span{color:#8A90A8}
+
+/* 底部导航：毛玻璃 */
+.tabbar{background:rgba(255,255,255,.86);backdrop-filter:blur(22px);border-top:1px solid rgba(232,235,244,.9)}
+.tab{color:#9AA0BC}
+.tab.on{color:var(--ai1)}
+.tab.on .ticon{filter:none;transform:translateY(-1px)}
+.tab .ticon{filter:grayscale(1) opacity(.75)}
+
+/* 覆盖层 */
+.overlay{background:var(--bg)}
+.ov-head{padding:60px 20px 12px}
+.ov-head .back{background:#fff;box-shadow:var(--shadow-sm);color:#5D6380;border-radius:12px}
+.ov-scroll{padding:6px 20px 120px}
+.ov-dark{background:linear-gradient(180deg,#141630 0%,#1D2244 100%)}
+
+/* 建档流程 */
+.ob-title{color:#2A2E4D;font-weight:850}
+.ob-sub{color:#8A90A8}
+.photo-box{background:linear-gradient(135deg,#EFF2FF,#EEF8F8);border-color:#C9D4FF}
+.photo-box p{color:#7A80A0}
+.scan-box{background:linear-gradient(135deg,#DDE4FF,#E4F5F6)}
+.scan-line{background:linear-gradient(90deg,transparent,var(--ai1),transparent)}
+.ob-progress{background:#E8EBF5}
+.ob-progress i{background:linear-gradient(90deg,var(--ai1),var(--ai2))}
+.ob-step .dot{border-color:#D4D9EC}
+.result-card,.free-dialog,.success-card{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow)}
+.free-dialog::before{display:none}
+.conf-bar{background:#E8EBF5}
+.conf-bar i{background:linear-gradient(90deg,var(--mint),#7BE0C3)}
+.name-input{background:#F2F4FB;border:1px solid #E8EBF4}
+.price-tag{background:#FFF4DE;color:#A9770B}
+.id-num{background:#F0F3FF;color:#5A66D6}
+.success-card .sc-icon{background:#E2F8F1;color:#1C9E7A}
+
+/* 播放器 */
+.player{border-radius:20px;box-shadow:var(--shadow)}
+.pl-play{background:rgba(255,255,255,.94);color:#3D47A8}
+
+/* 数字身份证：AI 蓝紫 */
+.idcard{background:linear-gradient(135deg,#2A3066 0%,#46409E 55%,#5B4AB8 100%);box-shadow:0 22px 46px rgba(58,52,150,.32)}
+.idcard::before{background:radial-gradient(circle,rgba(110,123,255,.5),transparent 65%)}
+.id-logo{background:linear-gradient(135deg,var(--ai1),var(--ai2))}
+.id-note{color:#7A7F9C}
+
+/* 会员 */
+.member-hero{background:linear-gradient(135deg,#F1F4FF,#EEF8F8);border:1px solid #E6EBFF}
+.member-hero p{color:#767C99}
+.plan{background:#fff;border-color:#EFF2F9}
+.plan.hot{background:linear-gradient(180deg,#F2F4FF,#fff);border-color:#B9C3FF}
+.plan .price b{color:#5A66D6}
+.plan li{color:#6A7090}
+.benefit{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+.benefit p{color:#8A90A8}
+.p-badge{background:linear-gradient(135deg,var(--ai1),var(--ai2))}
+
+/* 医院 / 洗护 */
+.hosp-sync{background:linear-gradient(135deg,#E9F4FF,#E5F7F3);border:1px solid #DCEBFF}
+.hosp-sync .txt p{color:#63819A}
+.coupon,.hospital-row,.svc-opt,.chip-opt{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+.switch{background:#D9DEEF}
+.switch.on{background:var(--ai1)}
+.svc-opt.on{border-color:#7B87FF;background:#F4F6FF}
+.chip-opt.on{border-color:#7B87FF;color:#5A66D6;background:#F4F6FF}
+.coupon .c-val b{color:#5A66D6}
+.svc-opt .p{color:#5A66D6}
+.hospital-row .rate{color:#E8A20C}
+
+/* 表单 / 弹窗 */
+.form-card{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+.field label{color:#626885}
+.field input,.field textarea{background:#F2F4FB;border:1px solid #E8EBF4;border-radius:12px}
+.type-chip{background:#F2F4FB;color:#8A90A8}
+.type-chip.on{background:#F0F3FF;color:#5A66D6;border-color:#B9C3FF}
+.dialog,.sheet{background:#fff;box-shadow:0 24px 60px rgba(36,39,58,.22)}
+.agree-list label{color:#6A7090}
+.share-item{color:#626885}
+
+/* 影院 */
+.cinema-cd .cd-cell{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
+.cinema-cd .cd-cell b{color:#B9C3FF}
+.ticket{box-shadow:0 18px 40px rgba(0,0,0,.25)}
+.ticket::before,.ticket::after{background:#141630}
+.poster{background:linear-gradient(150deg,#232955 0%,#3D3A92 60%,#5C4AB8 100%)}
+
+/* 提示 */
+.toast{background:rgba(36,39,58,.92);backdrop-filter:blur(10px);border-radius:14px}
+.note{color:#A2A8C2}
 </style>
 </head>
 <body>
@@ -680,11 +890,11 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
             <div class="meta"><b>柯基旺财巡山日记</b><span>@旺财爸爸</span></div>
           </div>
           <div class="mcard" onclick="goTab('market')">
-            <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)">🐰<span class="badge">🔥 9800赞</span></div>
+            <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge">🐰 · 🔥 9800赞</span></div>
             <div class="meta"><b>兔兔奶糖的生日派对</b><span>@奶糖饲养员</span></div>
           </div>
           <div class="mcard" onclick="goTab('market')">
-            <div class="cover" style="background:linear-gradient(135deg,#E4F8F2,#BDEBDD)">🐕<span class="badge">🔥 1.2万赞</span></div>
+            <div class="cover" style="background:linear-gradient(135deg,#E4F8F2,#BDEBDD)"><img class="img-cover" src="assets/videos/naicha-poster.jpg" alt="边牧球球"><span class="badge">🐕 · 🔥 1.2万赞</span></div>
             <div class="meta"><b>边牧球球的滑板教学</b><span>@球球教练</span></div>
           </div>
         </div>
@@ -782,7 +992,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
           </div>
           <div class="feed-card" data-cat="exo">
             <div class="feed-cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)" onclick="playVideo('兔兔奶糖的生日派对','🐰','#FFE6EE,#F3C6E0')">
-              <span style="font-size:56px">🐰</span><span class="dur">00:38</span>
+              <img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge">🐰 奶糖</span><span class="dur">00:38</span>
             </div>
             <div class="feed-body">
               <div class="row"><h5>兔兔奶糖的生日派对</h5><span class="chip">🔥 9800</span></div>
@@ -808,7 +1018,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
           </div>
           <div class="feed-card" data-cat="dog">
             <div class="feed-cover" style="background:linear-gradient(135deg,#DFF6E9,#B8E4CD)" onclick="playVideo('边牧球球的滑板教学','🐕','#DFF6E9,#B8E4CD')">
-              <span style="font-size:56px">🐕</span><span class="dur">00:52</span>
+              <img class="img-cover" src="assets/videos/naicha-poster.jpg" alt="边牧球球"><span class="badge">🐕 球球</span><span class="dur">00:52</span>
             </div>
             <div class="feed-body">
               <div class="row"><h5>边牧球球的滑板教学</h5><span class="chip">🔥 1.5万</span></div>
@@ -1140,7 +1350,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
             <div class="ob-title">你的 AI 宠物视频已生成 🎉</div>
             <p class="ob-sub">豆豆的数字角色影片 · 可播放、可分享、可上传云市场成为个人资产。</p>
             <div class="player" style="margin-top:22px" id="ob-player">
-              <div class="pl-bg"><span class="glow"></span><img class="photo-img" src="assets/pets/doudou.jpg" alt="豆豆"></div>
+              <div class="pl-bg"><span class="glow"></span><video id="demo-video" class="photo-img" src="assets/videos/naicha.mp4" poster="assets/pets/doudou.jpg" playsinline preload="none"></video></div>
               <button class="pl-play" onclick="playDemo()">▶</button>
               <div class="pl-bottom">
                 <div class="pl-title">豆豆的夏日首映</div>
@@ -1281,7 +1491,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
               <div class="m"><b>柯基旺财巡山日记</b><span>03:12</span></div>
             </div>
             <div class="cin-item" onclick="toast('预告片播放中…（演示）')">
-              <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><span style="font-size:30px">🐰</span></div>
+              <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge" style="position:absolute;left:6px;top:6px;z-index:2">🐰</span></div>
               <div class="m"><b>兔兔奶糖的生日派对</b><span>02:48</span></div>
             </div>
             <div class="cin-item" onclick="toast('预告片播放中…（演示）')">
@@ -1831,8 +2041,26 @@ function finishOnboard(){
 }
 
 let demoInt=null;
+function fmtTime(t){ t=Math.max(0,Math.floor(t)); return '00:'+String(t).padStart(2,'0'); }
 function playDemo(){
   const bar=$('#demo-bar'), cur=$('#demo-cur');
+  const v=$('#demo-video');
+  if(v){
+    if(demoInt){ clearInterval(demoInt); demoInt=null; }
+    if(v.paused){ v.play().catch(()=>{}); toast('正在播放 AI 影片'); }
+    else { v.pause(); }
+    v.onended=()=>{ if(bar) bar.style.width='100%'; };
+    if(!v._watch){
+      v._watch=true;
+      setInterval(()=>{
+        if(v.duration){
+          if(bar) bar.style.width=((v.currentTime/v.duration)*100)+'%';
+          if(cur) cur.textContent=fmtTime(v.currentTime);
+        }
+      },250);
+    }
+    return;
+  }
   if(demoInt){ clearInterval(demoInt); demoInt=null; }
   let p=0; const total=28000, step=200;
   demoInt=setInterval(()=>{
