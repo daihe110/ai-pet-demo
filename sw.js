@@ -1,11 +1,16 @@
-const VERSION = "aipet-v1";
+const VERSION = "aipet-v2";
 const CORE = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/apple-touch-icon.png"
+  "./icons/apple-touch-icon.png",
+  "./assets/pets/doudou.jpg",
+  "./assets/pets/cat-afei.jpg",
+  "./assets/pets/cat-mili.jpg",
+  "./assets/pets/dog-wangcai.jpg",
+  "./assets/user/me-avatar-sm.jpg"
 ];
 
 self.addEventListener("install", (e) => {
