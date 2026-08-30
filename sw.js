@@ -13,7 +13,6 @@ const CORE = [
   "./assets/pets/cat-new1.jpg",
   "./assets/pets/cat-new2.jpg",
   "./assets/videos/naicha-poster.jpg",
-  "./assets/videos/naicha.mp4",
   "./assets/user/person-2.jpg",
   "./assets/user/me-avatar-sm.jpg"
 ];

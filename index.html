@@ -830,6 +830,17 @@ body{
 .report-card::after{content:"";opacity:0}
 .grow-hero::after{content:"";opacity:0}
 .p-emoji{font-size:0}
+.player.playing .pl-play{display:none}
+.player.playing .pl-bottom{display:none}
+.player.playing video{z-index:6}
+
+/* 切图模式：只输出纯页面，无外框与背景 */
+body.cut{background:#F3F7F4;display:block}
+body.cut .stage{padding:0;gap:0}
+body.cut .phone{width:390px;height:812px;border-radius:0;padding:0;box-shadow:none;position:absolute;left:0;top:0}
+body.cut .phone::before{display:none}
+body.cut .viewport{border-radius:0}
+body.cut .stage-note{display:none}
 </style>
 </head>
 <body>
@@ -1419,13 +1430,13 @@ body{
             <div class="ob-title">你的 AI 宠物视频已生成</div>
             <p class="ob-sub">豆豆的数字角色影片 · 可播放、可分享、可上传云市场成为个人资产。</p>
             <div class="player" style="margin-top:22px" id="ob-player">
-              <div class="pl-bg"><span class="glow"></span><video id="demo-video" class="photo-img" src="assets/videos/naicha.mp4" poster="assets/pets/doudou.jpg" playsinline preload="none"></video></div>
+              <div class="pl-bg"><span class="glow"></span><video id="demo-video" class="photo-img" src="assets/videos/video-1.mp4" poster="assets/pets/doudou.jpg" playsinline preload="none"></video></div>
               <button class="pl-play" onclick="playDemo()">▶</button>
               <div class="pl-bottom">
                 <div class="pl-title">豆豆的夏日首映</div>
                 <div class="pl-sub">AI数字角色影片 · 高清 1080P</div>
                 <div class="pl-track"><i id="demo-bar"></i></div>
-                <div class="pl-time"><span id="demo-cur">00:00</span><span>00:28</span></div>
+                <div class="pl-time"><span id="demo-cur">00:00</span><span>00:47</span></div>
               </div>
             </div>
             <div class="chipline" style="margin-top:14px">
@@ -2110,7 +2121,11 @@ function playDemo(){
   const v=$('#demo-video');
   if(v){
     if(demoInt){ clearInterval(demoInt); demoInt=null; }
-    if(v.paused){ v.play().catch(()=>{}); toast('正在播放 AI 影片'); }
+    if(v.paused){
+      v.controls=true;
+      const p=$('#ob-player'); if(p) p.classList.add('playing');
+      v.play().catch(()=>{});
+    }
     else { v.pause(); }
     v.onended=()=>{ if(bar) bar.style.width='100%'; };
     if(!v._watch){
@@ -2252,6 +2267,27 @@ $$('.chip-opt').forEach(c=>c.addEventListener('click',()=>{
   row.querySelectorAll('.chip-opt').forEach(x=>x.classList.remove('on'));
   c.classList.add('on');
 }));
+
+/* 批量切图用：支持 #page= / #ov= / #ob= 直达 */
+(function(){
+  const raw=location.hash.replace('#','');
+  if(!raw) return;
+  if(raw.indexOf('&cut')>=0){
+    document.body.classList.add('cut');
+    const vs=$('#viewport'); if(vs) vs.classList.add('cut');
+  }
+  const h=raw.split('&')[0];
+  const i=h.indexOf('=');
+  const k=i>0?h.slice(0,i):h, v=i>0?h.slice(i+1):'';
+  if(k==='page'){ goTab(v); }
+  else if(k==='ov'){ openOv('ov-'+v); }
+  else if(k==='ob'){
+    openOv('ov-onboard'); showOb('ob-'+v);
+    if(v==='profile'){ const ok=$('#pf-success'); if(ok) ok.style.display='block'; const bar=$('#pf-bar'); if(bar) bar.style.width='100%'; }
+    if(v==='gen'){ const bar=$('#gen-bar'); if(bar) bar.style.width='100%'; const done=$('#gen-done-btn'); if(done) done.style.display='block'; }
+    if(v==='scan'){ const bar=$('#scan-bar'); if(bar) bar.style.width='100%'; }
+  }
+})();
 
 startCountdown();
 </script>
