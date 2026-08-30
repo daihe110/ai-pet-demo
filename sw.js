@@ -1,4 +1,4 @@
-const VERSION = "aipet-v4";
+const VERSION = "aipet-v7";
 const CORE = [
   "./",
   "./index.html",

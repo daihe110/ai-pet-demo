@@ -7,7 +7,7 @@
 <meta name="description" content="和任何宠物一起看电影 · 浪动宠物 App 交互原型">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
-<meta name="theme-color" content="#FF4E7A">
+<meta name="theme-color" content="#0B1E19">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <script>
@@ -199,7 +199,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
 .quick span{font-size:10px;font-weight:700}
 
 .report-card{padding:16px;background:linear-gradient(135deg,#3B2A72,#5B2A7D);color:#fff;position:relative;overflow:hidden}
-.report-card::after{content:"📊";position:absolute;right:14px;top:14px;font-size:26px;opacity:.8}
+.report-card::after{content:"";position:absolute;right:14px;top:14px;font-size:26px;opacity:.8}
 .report-card h4{font-size:15px;font-weight:800}
 .report-card .rc-date{font-size:10px;opacity:.7;margin-top:2px}
 .report-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:12px 0 10px}
@@ -545,7 +545,7 @@ img{max-width:100%}
 .tab .ticon .ic{width:21px;height:21px}
 .grow-hero{background:linear-gradient(135deg,#FFF3E4,#F3E9FF);border-radius:20px;padding:14px;display:flex;gap:14px;
   align-items:center;position:relative;overflow:hidden}
-.grow-hero::after{content:"🐾";position:absolute;right:-4px;bottom:-10px;font-size:58px;opacity:.12;transform:rotate(-12deg)}
+.grow-hero::after{content:"";position:absolute;right:-4px;bottom:-10px;font-size:58px;opacity:.12;transform:rotate(-12deg)}
 .gh-photo{width:88px;height:88px;border-radius:24px;overflow:hidden;flex:none;position:relative;
   border:3px solid #fff;box-shadow:0 10px 22px rgba(255,122,69,.3);z-index:1}
 .gh-photo img{width:100%;height:100%;object-fit:cover}
@@ -565,213 +565,271 @@ img{max-width:100%}
 }
 </style>
 <style>
-/* ===== AI 极简重构主题 ===== */
+/* ===== 浪动宠物 · 绿幕影院主题 ===== */
 :root{
-  --brand1:#FF7A45; --brand2:#FF4E7A; --ink:#24273A; --muted:#8A90A8;
-  --bg:#F5F7FC; --bg2:#EDF1F9; --card:#FFFFFF; --line:#E8EBF4;
-  --ai1:#6E7BFF; --ai2:#8F6EFF; --ai3:#54C8CE; --mint:#2FBE98; --gold:#F2B64F;
-  --radius:20px;
-  --shadow:0 12px 32px rgba(36,39,58,.07);
-  --shadow-sm:0 6px 18px rgba(36,39,58,.06);
+  --brand1:#009E7C; --brand2:#FF5A4E; --ink:#16231E; --muted:#667870;
+  --bg:#F3F7F4; --bg2:#E9F1ED; --card:#FFFFFF; --line:#DCE7E1;
+  --mint:#0E8F70; --gold:#FFB92E; --cyan:#2DB4DD; --lime:#BFE94C;
+  --dark:#0B1E19; --radius:8px;
+  --shadow:0 10px 24px rgba(15,42,33,.08);
+  --shadow-sm:0 4px 12px rgba(15,42,33,.05);
 }
-body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
-.phone{background:#15172A;box-shadow:0 40px 90px rgba(36,39,58,.25),inset 0 0 0 2px #262A45}
-.phone::before{background:#15172A}
+body{
+  background:linear-gradient(160deg,#F7FAF8 0%,#F1F6F3 50%,#EAF3F0 100%);
+  color:var(--ink);
+}
+.phone{background:#0B1E19;box-shadow:0 44px 90px rgba(11,30,25,.32),inset 0 0 0 2px #24463C}
+.phone::before{background:#0B1E19}
 .viewport{background:var(--bg)}
-.homebar.light{background:#DDE2F0}
+.homebar.light{background:#BFD6CC}
+.statusbar{color:var(--ink)}
 
-/* 呼吸感：更宽的留白 */
-.screen{padding:60px 20px 122px}
-.section-title{margin:28px 4px 12px}
-.section-title h3{font-size:15px;font-weight:700;letter-spacing:.2px}
+/* 页面骨架 */
+.screen{padding:56px 18px 116px}
+.section-title{margin:26px 2px 10px;padding-left:10px;position:relative}
+.section-title::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:3px;border-radius:2px;background:var(--brand1)}
+.section-title:nth-of-type(odd)::before{background:var(--gold)}
+.section-title h3{font-size:15px;font-weight:800;letter-spacing:0}
 .section-title a{color:var(--muted)}
-.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid #F0F2F9}
+.card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--line)}
 
 /* 顶栏 */
-.topbar{margin:6px 2px 16px}
-.loc{font-size:14px;font-weight:700;color:var(--ink)}
-.loc span{background:linear-gradient(135deg,rgba(110,123,255,.12),rgba(143,110,255,.12));color:var(--ai1);font-weight:700}
-.iconbtn{background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-radius:12px;box-shadow:var(--shadow-sm);color:#5D6380}
+.topbar{margin:4px 2px 14px}
+.loc{font-size:14px;font-weight:800;color:var(--ink)}
+.loc span{background:rgba(0,158,124,.1);color:var(--brand1);font-weight:700}
+.iconbtn{background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow-sm);color:var(--ink)}
 
-/* 按钮：AI 蓝紫主色 */
-.btn{font-weight:650;border-radius:14px;letter-spacing:.2px}
-.btn-primary{background:linear-gradient(135deg,var(--ai1),var(--ai2));box-shadow:0 10px 22px rgba(110,123,255,.28)}
-.btn-ghost{background:#EEF1FA;color:#4A5070}
-.btn-ghost-light{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.28)}
+/* 按钮 */
+.btn{font-weight:800;border-radius:10px;letter-spacing:0}
+.btn-primary{background:var(--brand1);box-shadow:0 8px 18px rgba(0,158,124,.24)}
+.btn-primary:active{background:#008C6E}
+.btn-ghost{background:#EDF3EF;color:var(--ink)}
+.btn-ghost-light{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.26)}
 
-/* 看电影核心模块：轻盈通透 */
+/* 看电影核心模块：深色放映厅 */
 .movie-hero{
-  background:linear-gradient(135deg,#E9EDFF 0%,#EFF7FA 60%,#EDF1FF 100%);
-  color:#252846;box-shadow:0 18px 40px rgba(110,123,255,.14);border:1px solid #E4E9FF;padding:24px 22px 22px;
+  background:linear-gradient(135deg,#0B1E19 0%,#12382E 58%,#1A4D3D 100%);
+  color:#fff;border:1px solid #234A3E;border-radius:10px;box-shadow:0 16px 34px rgba(11,30,25,.22);
+  padding:22px 18px 18px;
 }
 .movie-hero::before{display:none}
-.mh-tag{background:rgba(255,255,255,.68);border:1px solid rgba(110,123,255,.22);color:#5A64C9}
-.mh-tag i{background:#7B87FF;box-shadow:0 0 10px #7B87FF}
-.movie-hero h2{color:#252846;font-size:23px;font-weight:850;line-height:1.42}
-.movie-hero .sub{color:#6E7390}
-.mh-film{color:var(--ai1)}
-.movie-hero .btn-ghost-light{background:rgba(255,255,255,.72);color:#5A64C9;border-color:rgba(110,123,255,.22)}
-.cd-cell{background:rgba(255,255,255,.72);border:1px solid rgba(110,123,255,.16);backdrop-filter:blur(6px);border-radius:12px;padding:8px 0}
-.cd-cell b{color:#3D47A8;font-weight:800}
-.cd-cell span{color:#8A90B5}
-.cd-sep{color:#AEB4D2}
+.movie-hero::after{content:"";position:absolute;right:0;bottom:0;left:0;height:5px;opacity:1;
+  background:linear-gradient(90deg,var(--gold) 0 22%,var(--brand1) 22% 47%,var(--cyan) 47% 68%,var(--brand2) 68% 86%,var(--lime) 86% 100%)}
+.mh-tag{background:rgba(255,185,46,.14);border:1px solid rgba(255,185,46,.38);color:#FFD166}
+.mh-tag i{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.movie-hero h2{color:#fff;font-size:23px;font-weight:900;line-height:1.4;letter-spacing:0}
+.movie-hero .sub{color:rgba(255,255,255,.72)}
+.mh-film{color:var(--gold)}
+.movie-hero .btn-primary{background:var(--gold);color:var(--dark);box-shadow:0 8px 20px rgba(255,185,46,.3)}
+.movie-hero .btn-ghost-light{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.24)}
+.cd-cell{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:7px 0}
+.cd-cell b{color:#FFD166;font-weight:800}
+.cd-cell span{color:rgba(255,255,255,.62)}
+.cd-sep{color:rgba(255,255,255,.4)}
 
 /* 宠物身份卡 */
-.pet-card{background:linear-gradient(135deg,#FFFFFF,#FAFBFF);border:1px solid #EFF1F9}
-.pet-avatar{background:linear-gradient(135deg,#FFEFE6,#F1EBFF);box-shadow:0 8px 18px rgba(110,123,255,.12)}
-.pet-empty{background:linear-gradient(135deg,#EFF2FF,#F0F7F8);border:1px solid #E6EAFF}
-.pet-empty h4{color:#2A2E4D}
-.pet-empty p{color:#7A7F9C}
-.chip{background:#EFF2FC;color:#5A6184}
-.chip.gold{background:#FFF4DE;color:#A9770B}
-.chip.mint{background:#E4F7F2;color:#148F74}
+.pet-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand1)}
+.pet-avatar{background:#EAF4EF;border-radius:10px;box-shadow:0 8px 18px rgba(15,42,33,.1)}
+.pet-empty{background:linear-gradient(135deg,#EFF8F2,#F2FBF8);border:1px dashed #9FD3BD;border-radius:8px}
+.pet-empty h4{color:var(--ink)}
+.pet-empty p{color:var(--muted)}
+.chip{background:#EDF3EF;color:#3E554C}
+.chip.gold{background:#FFF4D9;color:#9A6A00}
+.chip.mint{background:#E1F5ED;color:#0D7C63}
 
-/* 服务九宫格 */
-.svc-grid{gap:12px}
-.svc{border-radius:18px;padding:14px 4px 12px;background:rgba(255,255,255,.9);border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
-.svc span{color:#4C5170;font-weight:650}
-.svc .ico{width:40px;height:40px;border-radius:14px}
-.svc.c1 .ico{background:#E8ECFF;color:#5A66E0}.svc.c2 .ico{background:#E0F4F5;color:#1FA6AD}
-.svc.c3 .ico{background:#FFF1DE;color:#D08A16}.svc.c4 .ico{background:#E3F1FF;color:#2F7FD1}
-.svc.c5 .ico{background:#E2F8F1;color:#1C9E7A}.svc.c6 .ico{background:#F3E9FF;color:#8A5CF0}
-.svc.c7 .ico{background:#FDE8EF;color:#E05A84}.svc.c8 .ico{background:#FFF3DE;color:#C88B14}
+/* 服务网格 */
+.svc-grid{gap:10px}
+.svc{border-radius:8px;padding:12px 4px 10px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.svc span{color:var(--ink);font-weight:700}
+.svc .ico{width:38px;height:38px;border-radius:9px}
+.svc.c1 .ico{background:#E1F4EC;color:#0B8A69}.svc.c2 .ico{background:#E2F4FA;color:#178CB0}
+.svc.c3 .ico{background:#FFF3D9;color:#B07A00}.svc.c4 .ico{background:#FDEAE6;color:#D94B3F}
+.svc.c5 .ico{background:#EAF7D9;color:#5F8E0E}.svc.c6 .ico{background:#F3ECFF;color:#7A52CC}
+.svc.c7 .ico{background:#E7F4FF;color:#2E78C2}.svc.c8 .ico{background:#FFF0DF;color:#C27518}
 
 /* 云市场 */
-.mcard,.feed-card{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm);border-radius:18px}
-.mcard .meta b,.feed-body h5{color:#2A2E4D}
-.pill{background:#fff;color:#626885;border-color:#E8EBF4}
-.pill.on{background:linear-gradient(135deg,var(--ai1),var(--ai2));color:#fff;border-color:transparent}
-.like-btn{background:#F0F3FA;color:#606686}
-.like-btn.liked{background:#FDEBEF;color:#E2445A}
-.dl-btn{background:linear-gradient(135deg,var(--ai1),var(--ai2));box-shadow:0 8px 16px rgba(110,123,255,.22)}
-.asset-card{background:linear-gradient(135deg,#F1F4FF,#F4F8F9);border-color:#DCE4FF}
-.stat-box{background:#fff;border:1px solid #EFF2FA}
+.mcard,.feed-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);border-radius:8px}
+.mcard .meta b,.feed-body h5{color:var(--ink)}
+.mcard .meta span{color:var(--muted)}
+.pill{background:#fff;color:var(--muted);border:1px solid var(--line)}
+.pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.like-btn{background:#F0F4F1;color:var(--muted)}
+.like-btn.liked{background:#FDE9E7;color:#D94B3F}
+.dl-btn{background:var(--brand1);box-shadow:0 8px 16px rgba(0,158,124,.2)}
+.asset-card{background:linear-gradient(135deg,#FFF9EC,#F3FBF7);border:1px solid #EAD9A8;border-left:4px solid var(--gold)}
+.asset-card .tag{background:var(--dark);color:#FFD166}
+.stat-box{background:#fff;border:1px solid var(--line)}
 
-/* 成长空间：清爽身份卡 */
-.grow-hero{background:linear-gradient(135deg,#EFF2FF,#F0F8F8);border:1px solid #E6EBFF;padding:16px}
-.gh-photo{border-color:#fff;box-shadow:0 12px 26px rgba(110,123,255,.22)}
-.gh-name h4{color:#2A2E4D}
-.gh-info>p{color:#767C99}
-.gh-tags span{background:rgba(255,255,255,.86);color:#5F6793;border:1px solid #ECEEF8}
-.quick{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm);border-radius:16px}
-.quick span{color:#4C5170}
+/* 成长空间 */
+.grow-hero{background:#fff;border:1px solid var(--line);border-left:4px solid var(--brand1);padding:16px}
+.gh-photo{border-color:#fff;box-shadow:0 12px 26px rgba(15,42,33,.16)}
+.gh-name h4{color:var(--ink)}
+.gh-info>p{color:var(--muted)}
+.gh-tags span{background:#F0F5F2;color:#3E554C;border:1px solid var(--line)}
+.quick{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm);border-radius:8px}
+.quick span{color:var(--ink)}
 
 /* 月报 */
 .report-card{
-  background:linear-gradient(135deg,#F2F4FF,#EFF8F8);color:#2A2E4D;border:1px solid #E6EAFF;
-  box-shadow:var(--shadow-sm);
+  background:linear-gradient(135deg,#0E231C 0%,#14382D 62%,#1B4A3B 100%);color:#fff;
+  border:1px solid #24483C;border-radius:8px;box-shadow:0 12px 28px rgba(11,30,25,.2);
 }
-.report-card .rc-date{color:#7A7F9C}
-.report-stats .rs{background:rgba(255,255,255,.72);border:1px solid #E8ECF8}
-.report-stats .rs b{color:#3D47A8}
-.report-stats .rs span{color:#8389A4}
-.bars i{background:linear-gradient(to top,#6E7BFF,#A6AFFF)}
-.report-card p{color:#767C99!important}
+.report-card h4{color:#fff}
+.report-card .rc-date{color:rgba(255,255,255,.66)}
+.report-stats .rs{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.report-stats .rs b{color:#FFD166}
+.report-stats .rs span{color:rgba(255,255,255,.62)}
+.bars i{background:linear-gradient(to top,#BFE94C,#8FDC4C)}
+.report-card p{color:rgba(255,255,255,.72)!important}
 .report-card::after{display:none}
 
 /* 那年今日 */
-.memory-card{background:linear-gradient(135deg,#FFF7EE,#F1F3FF);border:1px solid #F4EBDD}
-.timeline::before{background:#E4E8F4}
-.tl-item::before{border-color:var(--ai1);box-shadow:0 0 0 3px #E8ECFF}
-.tl-item.g::before{border-color:var(--mint);box-shadow:0 0 0 3px #E4F7F2}
-.tl-item.b::before{border-color:var(--gold);box-shadow:0 0 0 3px #FFF4DE}
-.tl-box{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
+.memory-card{background:linear-gradient(135deg,#EDF8FB,#F1FBF6);border:1px solid #CFE8EE;border-left:4px solid var(--cyan)}
+.timeline::before{background:var(--line)}
+.tl-item::before{border-color:var(--brand1);box-shadow:0 0 0 3px #E1F4EC}
+.tl-item.g::before{border-color:var(--mint);box-shadow:0 0 0 3px #E1F5ED}
+.tl-item.b::before{border-color:var(--gold);box-shadow:0 0 0 3px #FFF4D9}
+.tl-box{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.tl-box p{color:var(--muted)}
 
 /* 我的 */
-.me-profile{background:linear-gradient(135deg,#F1F4FF,#EEF8F8);border:1px solid #E6EBFF}
-.me-profile p{color:#767C99}
-.me-ava{box-shadow:0 8px 18px rgba(110,123,255,.2)}
-.me-list{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
-.me-row{border-bottom:1px solid #F0F2F9}
-.me-row .txt b{color:#2A2E4D}
-.me-row .txt span{color:#8A90A8}
+.me-profile{background:linear-gradient(135deg,#EAF5F0,#EDF7FA);border:1px solid #D8E9E1}
+.me-profile h4{color:var(--ink)}
+.me-profile p{color:var(--muted)}
+.me-ava{box-shadow:0 8px 18px rgba(15,42,33,.16)}
+.me-list{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.me-row{border-bottom:1px solid var(--line)}
+.me-row .txt b{color:var(--ink)}
+.me-row .txt span{color:var(--muted)}
+.me-row .arrow{color:#A9BDB5}
 
-/* 底部导航：毛玻璃 */
-.tabbar{background:rgba(255,255,255,.86);backdrop-filter:blur(22px);border-top:1px solid rgba(232,235,244,.9)}
-.tab{color:#9AA0BC}
-.tab.on{color:var(--ai1)}
+/* 底部导航 */
+.tabbar{background:rgba(255,255,255,.9);backdrop-filter:blur(20px);border-top:1px solid var(--line)}
+.tab{position:relative;color:#93A59D}
+.tab.on{color:var(--brand1)}
+.tab.on::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:26px;height:3px;border-radius:0 0 3px 3px;background:var(--brand1)}
 .tab.on .ticon{filter:none;transform:translateY(-1px)}
-.tab .ticon{filter:grayscale(1) opacity(.75)}
+.tab .ticon{filter:grayscale(1) opacity(.72)}
 
 /* 覆盖层 */
 .overlay{background:var(--bg)}
-.ov-head{padding:60px 20px 12px}
-.ov-head .back{background:#fff;box-shadow:var(--shadow-sm);color:#5D6380;border-radius:12px}
-.ov-scroll{padding:6px 20px 120px}
-.ov-dark{background:linear-gradient(180deg,#141630 0%,#1D2244 100%)}
+.ov-head{padding:56px 18px 12px}
+.ov-head .back{background:#fff;box-shadow:var(--shadow-sm);color:var(--ink);border:1px solid var(--line);border-radius:8px}
+.ov-scroll{padding:4px 18px 116px}
+.ov-dark{background:linear-gradient(180deg,#0B1E19 0%,#102F26 100%)}
 
 /* 建档流程 */
-.ob-title{color:#2A2E4D;font-weight:850}
-.ob-sub{color:#8A90A8}
-.photo-box{background:linear-gradient(135deg,#EFF2FF,#EEF8F8);border-color:#C9D4FF}
-.photo-box p{color:#7A80A0}
-.scan-box{background:linear-gradient(135deg,#DDE4FF,#E4F5F6)}
-.scan-line{background:linear-gradient(90deg,transparent,var(--ai1),transparent)}
-.ob-progress{background:#E8EBF5}
-.ob-progress i{background:linear-gradient(90deg,var(--ai1),var(--ai2))}
-.ob-step .dot{border-color:#D4D9EC}
-.result-card,.free-dialog,.success-card{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow)}
+.ob-title{color:var(--ink);font-weight:900;letter-spacing:0}
+.ob-sub{color:var(--muted)}
+.photo-box{background:linear-gradient(135deg,#EAF5F0,#F2FBF7);border:2px dashed #8FCAB4;border-radius:12px}
+.photo-box p{color:#5C7A6E}
+.scan-box{background:linear-gradient(135deg,#DCF1E8,#E8F6F2)}
+.scan-line{background:linear-gradient(90deg,transparent,var(--brand1),transparent)}
+.ob-progress{background:#E4ECE8}
+.ob-progress i{background:linear-gradient(90deg,var(--brand1),var(--cyan))}
+.ob-step .dot{border-color:#C2D4CB}
+.ob-step.done .dot{background:var(--brand1);border-color:var(--brand1)}
+.ob-step.now{color:var(--brand1)}
+.ob-step.now .dot{border-color:var(--brand1)}
+.result-card,.free-dialog,.success-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
 .free-dialog::before{display:none}
-.conf-bar{background:#E8EBF5}
-.conf-bar i{background:linear-gradient(90deg,var(--mint),#7BE0C3)}
-.name-input{background:#F2F4FB;border:1px solid #E8EBF4}
-.price-tag{background:#FFF4DE;color:#A9770B}
-.id-num{background:#F0F3FF;color:#5A66D6}
-.success-card .sc-icon{background:#E2F8F1;color:#1C9E7A}
+.free-dialog h4{color:var(--ink)}
+.conf-bar{background:#E4ECE8}
+.conf-bar i{background:linear-gradient(90deg,var(--brand1),#7BD9B8)}
+.name-input{background:#F0F5F2;border:1px solid var(--line)}
+.price-tag{background:#FFF4D9;color:#9A6A00}
+.id-num{background:#E9F6F1;color:var(--brand1)}
+.success-card .sc-icon{background:#E1F5ED;color:#0D7C63}
 
 /* 播放器 */
-.player{border-radius:20px;box-shadow:var(--shadow)}
-.pl-play{background:rgba(255,255,255,.94);color:#3D47A8}
+.player{border-radius:8px;box-shadow:var(--shadow)}
+.pl-play{background:rgba(255,255,255,.94);color:#0B3D2F}
 
-/* 数字身份证：AI 蓝紫 */
-.idcard{background:linear-gradient(135deg,#2A3066 0%,#46409E 55%,#5B4AB8 100%);box-shadow:0 22px 46px rgba(58,52,150,.32)}
-.idcard::before{background:radial-gradient(circle,rgba(110,123,255,.5),transparent 65%)}
-.id-logo{background:linear-gradient(135deg,var(--ai1),var(--ai2))}
-.id-note{color:#7A7F9C}
+/* 数字身份证 */
+.idcard{background:linear-gradient(135deg,#0B3D2F 0%,#0E5A44 58%,#14765A 100%);border-radius:8px;box-shadow:0 22px 44px rgba(11,61,47,.3)}
+.idcard::before{background:linear-gradient(135deg,rgba(255,185,46,.3),rgba(0,158,124,.1))}
+.id-logo{background:var(--gold);color:var(--dark)}
+.id-info .line .hl{color:#FFD166}
+.id-note{color:var(--muted)}
+.qr i{background:var(--ink)}
+.qr i:nth-child(3n){background:#fff}
 
 /* 会员 */
-.member-hero{background:linear-gradient(135deg,#F1F4FF,#EEF8F8);border:1px solid #E6EBFF}
-.member-hero p{color:#767C99}
-.plan{background:#fff;border-color:#EFF2F9}
-.plan.hot{background:linear-gradient(180deg,#F2F4FF,#fff);border-color:#B9C3FF}
-.plan .price b{color:#5A66D6}
-.plan li{color:#6A7090}
-.benefit{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
-.benefit p{color:#8A90A8}
-.p-badge{background:linear-gradient(135deg,var(--ai1),var(--ai2))}
+.member-hero{background:linear-gradient(135deg,#EAF5F0,#EDF7FA);border:1px solid #D8E9E1}
+.member-hero h4{color:var(--ink)}
+.member-hero p{color:var(--muted)}
+.plan{background:#fff;border:1px solid var(--line)}
+.plan.hot{background:linear-gradient(180deg,#FFF9EC,#fff);border-color:var(--gold)}
+.plan .price b{color:var(--brand1)}
+.plan li{color:var(--muted)}
+.benefit{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.benefit p{color:var(--muted)}
+.p-badge{background:var(--gold);color:var(--dark)}
 
 /* 医院 / 洗护 */
-.hosp-sync{background:linear-gradient(135deg,#E9F4FF,#E5F7F3);border:1px solid #DCEBFF}
-.hosp-sync .txt p{color:#63819A}
-.coupon,.hospital-row,.svc-opt,.chip-opt{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
-.switch{background:#D9DEEF}
-.switch.on{background:var(--ai1)}
-.svc-opt.on{border-color:#7B87FF;background:#F4F6FF}
-.chip-opt.on{border-color:#7B87FF;color:#5A66D6;background:#F4F6FF}
-.coupon .c-val b{color:#5A66D6}
-.svc-opt .p{color:#5A66D6}
-.hospital-row .rate{color:#E8A20C}
+.hosp-sync{background:linear-gradient(135deg,#E8F5FA,#E7F6EF);border:1px solid #CFE5EE}
+.hosp-sync .txt p{color:#54786F}
+.coupon,.hospital-row,.svc-opt,.chip-opt{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.switch{background:#CBDCD3}
+.switch.on{background:var(--brand1)}
+.svc-opt.on{border-color:var(--brand1);background:#EFF9F4}
+.chip-opt.on{border-color:var(--brand1);color:var(--brand1);background:#EFF9F4}
+.coupon .c-val b{color:var(--brand1)}
+.svc-opt .p{color:var(--brand1)}
+.hospital-row .rate{color:#D99B00}
 
 /* 表单 / 弹窗 */
-.form-card{background:#fff;border:1px solid #F0F2F9;box-shadow:var(--shadow-sm)}
-.field label{color:#626885}
-.field input,.field textarea{background:#F2F4FB;border:1px solid #E8EBF4;border-radius:12px}
-.type-chip{background:#F2F4FB;color:#8A90A8}
-.type-chip.on{background:#F0F3FF;color:#5A66D6;border-color:#B9C3FF}
-.dialog,.sheet{background:#fff;box-shadow:0 24px 60px rgba(36,39,58,.22)}
-.agree-list label{color:#6A7090}
-.share-item{color:#626885}
+.form-card{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.field label{color:var(--ink)}
+.field input,.field textarea{background:#F0F5F2;border:1px solid var(--line);border-radius:8px}
+.type-chip{background:#F0F5F2;color:var(--muted)}
+.type-chip.on{background:#E9F6F1;color:var(--brand1);border-color:var(--brand1)}
+.dialog,.sheet{background:#fff;box-shadow:0 24px 60px rgba(11,30,25,.24);border-radius:8px}
+.agree-list label{color:var(--muted)}
+.share-item{color:var(--muted)}
 
 /* 影院 */
-.cinema-cd .cd-cell{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16)}
-.cinema-cd .cd-cell b{color:#B9C3FF}
-.ticket{box-shadow:0 18px 40px rgba(0,0,0,.25)}
-.ticket::before,.ticket::after{background:#141630}
-.poster{background:linear-gradient(150deg,#232955 0%,#3D3A92 60%,#5C4AB8 100%)}
+.cinema-cd .cd-cell{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+.cinema-cd .cd-cell b{color:#FFD166}
+.ticket{border-radius:8px;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.ticket::before,.ticket::after{background:#0B1E19}
+.poster{background:linear-gradient(150deg,#0B1E19 0%,#143B30 58%,#1E5A44 100%);border-radius:8px}
+.poster .p-tag{color:#FFD166}
+.poster .p-date{color:#FFD166}
+.cin-title{color:#fff}
+.cin-item{border-radius:8px}
 
 /* 提示 */
-.toast{background:rgba(36,39,58,.92);backdrop-filter:blur(10px);border-radius:14px}
-.note{color:#A2A8C2}
+.toast{background:rgba(11,30,25,.94);backdrop-filter:blur(10px);border-radius:8px}
+.note{color:#93A59D}
+
+/* 统一字距 */
+.mh-tag,.id-title,.id-brand span,.poster h2,.poster .p-tag,.stamp,.cinema-top span,.id-num,.id-footer p{letter-spacing:0}
+
+/* 统一圆角 */
+.result-card,.free-dialog,.success-card,.scan-box,.name-input,.plan,.benefit,.hosp-sync,.coupon,.hospital-row,.svc-opt,.chip-opt,.member-hero,.form-card,.type-chip,.tl-box,.grow-hero{border-radius:8px}
+
+/* 清理残留暖色底 */
+.photo-box.filled,.result-card .rc-photo,.memory-card .mc-photo,.hospital-row .h-photo{background:linear-gradient(135deg,#DDF1E9,#E7F4FA)}
+.player .pl-bg{background:linear-gradient(135deg,#0B3D2F,#14765A 72%)}
+.player .pl-bg .glow{background:radial-gradient(circle,rgba(255,185,46,.55),transparent 70%)}
+
+/* emoji → SVG 图标辅助 */
+.btn .ic{margin-right:5px}
+.free-dialog .fd-emoji{width:64px;height:64px;margin:0 auto 12px;border-radius:16px;background:linear-gradient(135deg,#DDF1E9,#E7F4FA);display:flex;align-items:center;justify-content:center;color:var(--brand1);font-size:0}
+.mc-photo{overflow:hidden}
+.mc-photo img{width:100%;height:100%;object-fit:cover}
+.b-ico,.h-photo,.s-ico,.hico{color:var(--brand1)}
+.b-ico .ic,.h-photo .ic,.s-ico .ic,.hico .ic{width:20px;height:20px}
+.gh-ava .ic{width:22px;height:22px}
+.svc-opt .emoji .ic{width:22px;height:22px}
+.type-chip .ic{width:13px;height:13px;vertical-align:-2px;margin-right:3px}
+.gh-tags span .ic{width:11px;height:11px;vertical-align:-1px;margin-right:2px}
+.tl-box b .ic{width:13px;height:13px;vertical-align:-2px;color:var(--brand1);margin-right:3px}
+.id-logo .ic{width:18px;height:18px;color:#fff}
+.report-card::after{content:"";opacity:0}
+.grow-hero::after{content:"";opacity:0}
+.p-emoji{font-size:0}
 </style>
 </head>
 <body>
@@ -802,6 +860,18 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
     <symbol id="ic-upload" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9Z"/><path d="M12 12v7M9 10l3-3 3 3"/></symbol>
     <symbol id="ic-video" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
     <symbol id="ic-pencil" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="ic-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="ic-paw" viewBox="0 0 24 24"><ellipse cx="12" cy="15" rx="6" ry="4.2"/><circle cx="6.5" cy="10" r="1.7"/><circle cx="9.7" cy="6.8" r="1.7"/><circle cx="14.3" cy="6.8" r="1.7"/><circle cx="17.5" cy="10" r="1.7"/></symbol>
+    <symbol id="ic-cake" viewBox="0 0 24 24"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v3M12 8v3M17 8v3"/></symbol>
+    <symbol id="ic-graduation" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/><path d="M22 10v6"/></symbol>
+    <symbol id="ic-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></symbol>
+    <symbol id="ic-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5"/><path d="M16 5a3.5 3.5 0 0 1 0 7"/><path d="M18 15c2.2.7 3.5 2.3 3.5 5"/></symbol>
+    <symbol id="ic-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+    <symbol id="ic-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.5-3.5a2 2 0 0 0-2.8 0L6 20"/></symbol>
+    <symbol id="ic-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="ic-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21 7 14.2 2 9.3l6.9-1Z"/></symbol>
   </defs>
 </svg>
 <div class="stage">
@@ -839,7 +909,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div class="cd-cell"><b id="cd-s">00</b><span>秒</span></div>
           </div>
           <div class="mh-actions">
-            <button class="btn btn-primary" style="flex:1" onclick="event.stopPropagation();openOv('ov-cinema')">🎬 进入放映厅</button>
+            <button class="btn btn-primary" style="flex:1" onclick="event.stopPropagation();openOv('ov-cinema')"><svg class="ic" style="width:15px;height:15px;color:currentColor"><use href="#ic-movie"/></svg> 进入放映厅</button>
             <button class="btn btn-ghost-light" onclick="event.stopPropagation();toast('预告片播放中…（演示）')">预告片</button>
           </div>
         </div>
@@ -849,7 +919,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           <div class="pe-photo"><img src="assets/pets/doudou.jpg" alt="豆豆"></div>
           <h4>给宠物一个数字身份</h4>
           <p>上传宠物照片，AI 自动识别物种与品种，免费生成第一支 AI 宠物视频。</p>
-          <button class="btn btn-primary btn-sm" onclick="startOnboard()">📷 上传照片 · 免费生成AI视频</button>
+          <button class="btn btn-primary btn-sm" onclick="startOnboard()"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-camera"/></svg> 上传照片 · 免费生成AI视频</button>
         </div>
         <div class="card pet-card" id="pet-filled" style="display:none">
           <div class="pet-avatar"><img src="assets/pets/doudou.jpg" alt="豆豆"></div>
@@ -862,8 +932,8 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             </div>
           </div>
           <div class="pet-actions">
-            <button class="btn btn-primary btn-sm" onclick="openOv('ov-onboard');showOb('ob-video')">🎬 生成AI视频</button>
-            <button class="btn btn-ghost btn-sm" onclick="openOv('ov-idcard')">🪪 身份证</button>
+            <button class="btn btn-primary btn-sm" onclick="openOv('ov-onboard');showOb('ob-video')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-movie"/></svg> 生成AI视频</button>
+            <button class="btn btn-ghost btn-sm" onclick="openOv('ov-idcard')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-idcard"/></svg> 身份证</button>
           </div>
         </div>
 
@@ -882,26 +952,26 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         <div class="section-title"><h3>云市场 · 热门AI宠物视频</h3><a onclick="goTab('market')">进入市场 ›</a></div>
         <div class="hscroll">
           <div class="mcard" onclick="goTab('market')">
-            <div class="cover" style="background:linear-gradient(135deg,#FFE3C2,#FFC4A8)"><img class="img-cover" src="assets/pets/cat-afei.jpg" alt="橘猫阿福"><span class="badge">🔥 2.3万赞</span></div>
+            <div class="cover" style="background:linear-gradient(135deg,#FFE3C2,#FFC4A8)"><img class="img-cover" src="assets/pets/cat-afei.jpg" alt="橘猫阿福"><span class="badge">2.3万赞</span></div>
             <div class="meta"><b>橘猫阿福的雪中首秀</b><span>@阿福妈妈</span></div>
           </div>
           <div class="mcard" onclick="goTab('market')">
-            <div class="cover" style="background:linear-gradient(135deg,#D7F0FF,#B9D9FF)"><img class="img-cover" src="assets/pets/dog-wangcai.jpg" alt="柯基旺财"><span class="badge">🔥 1.8万赞</span></div>
+            <div class="cover" style="background:linear-gradient(135deg,#D7F0FF,#B9D9FF)"><img class="img-cover" src="assets/pets/dog-wangcai.jpg" alt="柯基旺财"><span class="badge">1.8万赞</span></div>
             <div class="meta"><b>柯基旺财巡山日记</b><span>@旺财爸爸</span></div>
           </div>
           <div class="mcard" onclick="goTab('market')">
-            <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge">🐰 · 🔥 9800赞</span></div>
+            <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge">9800赞</span></div>
             <div class="meta"><b>兔兔奶糖的生日派对</b><span>@奶糖饲养员</span></div>
           </div>
           <div class="mcard" onclick="goTab('market')">
-            <div class="cover" style="background:linear-gradient(135deg,#E4F8F2,#BDEBDD)"><img class="img-cover" src="assets/videos/naicha-poster.jpg" alt="边牧球球"><span class="badge">🐕 · 🔥 1.2万赞</span></div>
+            <div class="cover" style="background:linear-gradient(135deg,#E4F8F2,#BDEBDD)"><img class="img-cover" src="assets/videos/naicha-poster.jpg" alt="边牧球球"><span class="badge">1.2万赞</span></div>
             <div class="meta"><b>边牧球球的滑板教学</b><span>@球球教练</span></div>
           </div>
         </div>
 
         <div class="section-title"><h3>家庭纪念</h3><a onclick="openOv('ov-memory')">那年今日 ›</a></div>
         <div class="card memory-card" onclick="openOv('ov-memory')">
-          <div class="mc-photo">🏖️</div>
+          <div class="mc-photo"><img class="img-cover" src="assets/pets/doudou.jpg" alt="豆豆回忆"></div>
           <div style="flex:1">
             <h5>1年前的今天 · 豆豆第一次去海边</h5>
             <p>2025-08-28 · 浪花、奔跑和一张湿漉漉的笑脸</p>
@@ -913,8 +983,8 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 云市场 ============ -->
       <section class="screen" id="screen-market">
         <div class="topbar">
-          <div class="loc">☁️ 云市场 <span>个人数字资产</span></div>
-          <div class="iconbtn">💰</div>
+          <div class="loc"><svg class="ic" style="width:15px;height:15px;color:var(--brand1)"><use href="#ic-cloud"/></svg>云市场 <span>个人数字资产</span></div>
+          <div class="iconbtn"><svg class="ic" style="width:18px;height:18px"><use href="#ic-wallet"/></svg></div>
         </div>
 
         <div class="section-title" style="margin-top:2px"><h3>我的资产</h3><a onclick="toast('提现功能即将上线（演示）')">钱包 ›</a></div>
@@ -926,7 +996,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
               <p style="font-size:11px;color:#A07A5A;margin-top:3px">上传你的 AI 宠物视频素材，让它成为可分成、可授权的个人数字资产。</p>
             </div>
           </div>
-          <button class="btn btn-primary btn-sm" style="margin-top:12px" onclick="openOv('ov-onboard');showOb('ob-video')">🎬 去上传我的AI视频</button>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px" onclick="openOv('ov-onboard');showOb('ob-video')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-upload"/></svg> 去上传我的AI视频</button>
         </div>
         <div class="card asset-card" id="asset-filled" style="display:none">
           <span class="tag">已上架</span>
@@ -965,67 +1035,67 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
         <div class="feed-list" style="margin-top:12px">
           <div class="feed-card" data-cat="cat">
-            <div class="feed-cover" style="background:linear-gradient(135deg,#FFE3C2,#FFC4A8)" onclick="playVideo('橘猫阿福的雪中首秀','🐱','#FFE3C2,#FFC4A8','assets/pets/cat-afei.jpg')">
+            <div class="feed-cover" style="background:linear-gradient(135deg,#FFE3C2,#FFC4A8)" onclick="playVideo('橘猫阿福的雪中首秀','','#FFE3C2,#FFC4A8','assets/pets/cat-afei.jpg')">
               <img class="img-cover" src="assets/pets/cat-afei.jpg" alt="橘猫阿福"><span class="dur">00:32</span>
             </div>
             <div class="feed-body">
-              <div class="row"><h5>橘猫阿福的雪中首秀</h5><span class="chip">🔥 2.3万</span></div>
+              <div class="row"><h5>橘猫阿福的雪中首秀</h5><span class="chip">2.3万</span></div>
               <p class="owner">@阿福妈妈 · 布偶 · AI数字角色</p>
               <div class="feed-actions">
                 <button class="like-btn" onclick="like(this)"><svg class="ic"><use href="#ic-heart"/></svg><b>2.3万</b></button>
-                <button class="dl-btn" onclick="openOv('ov-download')">⬇ 下载使用 ¥2.00</button>
+                <button class="dl-btn" onclick="openOv('ov-download')"><svg class="ic" style="width:13px;height:13px;color:currentColor"><use href="#ic-download"/></svg> 下载使用 ¥2.00</button>
               </div>
             </div>
           </div>
           <div class="feed-card" data-cat="dog">
-            <div class="feed-cover" style="background:linear-gradient(135deg,#D7F0FF,#B9D9FF)" onclick="playVideo('柯基旺财巡山日记','🐶','#D7F0FF,#B9D9FF','assets/pets/dog-wangcai.jpg')">
+            <div class="feed-cover" style="background:linear-gradient(135deg,#D7F0FF,#B9D9FF)" onclick="playVideo('柯基旺财巡山日记','','#D7F0FF,#B9D9FF','assets/pets/dog-wangcai.jpg')">
               <img class="img-cover" src="assets/pets/dog-wangcai.jpg" alt="柯基旺财"><span class="dur">00:45</span>
             </div>
             <div class="feed-body">
-              <div class="row"><h5>柯基旺财巡山日记</h5><span class="chip">🔥 1.8万</span></div>
+              <div class="row"><h5>柯基旺财巡山日记</h5><span class="chip">1.8万</span></div>
               <p class="owner">@旺财爸爸 · 柯基 · AI数字角色</p>
               <div class="feed-actions">
                 <button class="like-btn" onclick="like(this)"><svg class="ic"><use href="#ic-heart"/></svg><b>1.8万</b></button>
-                <button class="dl-btn" onclick="openOv('ov-download')">⬇ 下载使用 ¥2.00</button>
+                <button class="dl-btn" onclick="openOv('ov-download')"><svg class="ic" style="width:13px;height:13px;color:currentColor"><use href="#ic-download"/></svg> 下载使用 ¥2.00</button>
               </div>
             </div>
           </div>
           <div class="feed-card" data-cat="exo">
-            <div class="feed-cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)" onclick="playVideo('兔兔奶糖的生日派对','🐰','#FFE6EE,#F3C6E0')">
-              <img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge">🐰 奶糖</span><span class="dur">00:38</span>
+            <div class="feed-cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)" onclick="playVideo('兔兔奶糖的生日派对','','#FFE6EE,#F3C6E0')">
+              <img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge">奶糖</span><span class="dur">00:38</span>
             </div>
             <div class="feed-body">
-              <div class="row"><h5>兔兔奶糖的生日派对</h5><span class="chip">🔥 9800</span></div>
+              <div class="row"><h5>兔兔奶糖的生日派对</h5><span class="chip">9800</span></div>
               <p class="owner">@奶糖饲养员 · 侏儒兔 · AI数字角色</p>
               <div class="feed-actions">
                 <button class="like-btn" onclick="like(this)"><svg class="ic"><use href="#ic-heart"/></svg><b>9800</b></button>
-                <button class="dl-btn" onclick="openOv('ov-download')">⬇ 下载使用 ¥2.00</button>
+                <button class="dl-btn" onclick="openOv('ov-download')"><svg class="ic" style="width:13px;height:13px;color:currentColor"><use href="#ic-download"/></svg> 下载使用 ¥2.00</button>
               </div>
             </div>
           </div>
           <div class="feed-card" data-cat="cat">
-            <div class="feed-cover" style="background:linear-gradient(135deg,#E8DFFF,#C9B8F5)" onclick="playVideo('布偶米粒的睡前故事','😺','#E8DFFF,#C9B8F5','assets/pets/cat-mili.jpg')">
+            <div class="feed-cover" style="background:linear-gradient(135deg,#E8DFFF,#C9B8F5)" onclick="playVideo('布偶米粒的睡前故事','','#E8DFFF,#C9B8F5','assets/pets/cat-mili.jpg')">
               <img class="img-cover" src="assets/pets/cat-mili.jpg" alt="布偶米粒"><span class="dur">01:05</span>
             </div>
             <div class="feed-body">
-              <div class="row"><h5>布偶米粒的睡前故事</h5><span class="chip">🔥 1.2万</span></div>
+              <div class="row"><h5>布偶米粒的睡前故事</h5><span class="chip">1.2万</span></div>
               <p class="owner">@米粒姐姐 · 布偶猫 · AI数字角色</p>
               <div class="feed-actions">
                 <button class="like-btn" onclick="like(this)"><svg class="ic"><use href="#ic-heart"/></svg><b>1.2万</b></button>
-                <button class="dl-btn" onclick="openOv('ov-download')">⬇ 下载使用 ¥2.00</button>
+                <button class="dl-btn" onclick="openOv('ov-download')"><svg class="ic" style="width:13px;height:13px;color:currentColor"><use href="#ic-download"/></svg> 下载使用 ¥2.00</button>
               </div>
             </div>
           </div>
           <div class="feed-card" data-cat="dog">
-            <div class="feed-cover" style="background:linear-gradient(135deg,#DFF6E9,#B8E4CD)" onclick="playVideo('边牧球球的滑板教学','🐕','#DFF6E9,#B8E4CD')">
-              <img class="img-cover" src="assets/videos/naicha-poster.jpg" alt="边牧球球"><span class="badge">🐕 球球</span><span class="dur">00:52</span>
+            <div class="feed-cover" style="background:linear-gradient(135deg,#DFF6E9,#B8E4CD)" onclick="playVideo('边牧球球的滑板教学','','#DFF6E9,#B8E4CD')">
+              <img class="img-cover" src="assets/videos/naicha-poster.jpg" alt="边牧球球"><span class="badge">球球</span><span class="dur">00:52</span>
             </div>
             <div class="feed-body">
-              <div class="row"><h5>边牧球球的滑板教学</h5><span class="chip">🔥 1.5万</span></div>
+              <div class="row"><h5>边牧球球的滑板教学</h5><span class="chip">1.5万</span></div>
               <p class="owner">@球球教练 · 边境牧羊犬 · AI数字角色</p>
               <div class="feed-actions">
                 <button class="like-btn" onclick="like(this)"><svg class="ic"><use href="#ic-heart"/></svg><b>1.5万</b></button>
-                <button class="dl-btn" onclick="openOv('ov-download')">⬇ 下载使用 ¥2.00</button>
+                <button class="dl-btn" onclick="openOv('ov-download')"><svg class="ic" style="width:13px;height:13px;color:currentColor"><use href="#ic-download"/></svg> 下载使用 ¥2.00</button>
               </div>
             </div>
           </div>
@@ -1034,11 +1104,11 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
               <img class="img-cover" src="assets/pets/doudou.jpg" alt="豆豆"><span class="dur">00:28</span><span class="tag-vip">我的资产</span>
             </div>
             <div class="feed-body">
-              <div class="row"><h5>豆豆的夏日首映</h5><span class="chip">🔥 36</span></div>
+              <div class="row"><h5>豆豆的夏日首映</h5><span class="chip">36</span></div>
               <p class="owner">@铲屎官小浪 · 金毛寻回犬 · 我的作品</p>
               <div class="feed-actions">
                 <button class="like-btn liked" onclick="like(this)"><svg class="ic"><use href="#ic-heart"/></svg><b>36</b></button>
-                <button class="dl-btn" onclick="toast('这是你自己的资产，无需付费下载（演示）')">⬇ 我的资产</button>
+                <button class="dl-btn" onclick="toast('这是你自己的资产，无需付费下载（演示）')"><svg class="ic" style="width:13px;height:13px;color:currentColor"><use href="#ic-download"/></svg> 我的资产</button>
               </div>
             </div>
           </div>
@@ -1048,8 +1118,8 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 成长 ============ -->
       <section class="screen" id="screen-grow">
         <div class="topbar">
-          <div class="loc">🌱 成长空间 <span>豆豆的家</span></div>
-          <div class="iconbtn" onclick="openOv('ov-memory')">📅</div>
+          <div class="loc"><svg class="ic" style="width:15px;height:15px;color:var(--brand1)"><use href="#ic-sprout"/></svg>成长空间 <span>豆豆的家</span></div>
+          <div class="iconbtn" onclick="openOv('ov-memory')"><svg class="ic" style="width:18px;height:18px"><use href="#ic-memory"/></svg></div>
         </div>
 
         <div class="grow-hero">
@@ -1058,18 +1128,18 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div class="gh-name"><h4>豆豆</h4><span class="chip gold">AI角色已认证</span></div>
             <p>金毛寻回犬 · 公 · 3岁2个月</p>
             <div class="gh-tags">
-              <span>📍 扬州 · 健康之都</span>
-              <span>🎂 2023-05-20</span>
-              <span>🏠 已陪伴 1186 天</span>
+              <span><svg class="ic"><use href="#ic-pin"/></svg>扬州 · 健康之都</span>
+              <span><svg class="ic"><use href="#ic-cake"/></svg>2023-05-20</span>
+              <span><svg class="ic"><use href="#ic-home"/></svg>已陪伴 1186 天</span>
             </div>
           </div>
         </div>
 
         <div class="quick-row">
-          <div class="quick" onclick="openOv('ov-record')"><div class="ico" style="background:#FFE9DE;color:#E86A3C"><svg class="ic"><use href="#ic-camera"/></svg></div><span>记录成长</span></div>
-          <div class="quick" onclick="openOv('ov-report')"><div class="ico" style="background:#FFF0D1;color:#C88A00"><svg class="ic"><use href="#ic-report"/></svg></div><span>成长月报</span></div>
-          <div class="quick" onclick="openOv('ov-memory')"><div class="ico" style="background:#E7E9FF;color:#6B5AE8"><svg class="ic"><use href="#ic-memory"/></svg></div><span>那年今日</span></div>
-          <div class="quick" onclick="openOv('ov-share')"><div class="ico" style="background:#E4F8F2;color:#0E8B70"><svg class="ic"><use href="#ic-share"/></svg></div><span>内容分享</span></div>
+          <div class="quick" onclick="openOv('ov-record')"><div class="ico" style="background:#E1F4EC;color:#0B8A69"><svg class="ic"><use href="#ic-camera"/></svg></div><span>记录成长</span></div>
+          <div class="quick" onclick="openOv('ov-report')"><div class="ico" style="background:#FFF3D9;color:#B07A00"><svg class="ic"><use href="#ic-report"/></svg></div><span>成长月报</span></div>
+          <div class="quick" onclick="openOv('ov-memory')"><div class="ico" style="background:#E7F4FF;color:#2E78C2"><svg class="ic"><use href="#ic-memory"/></svg></div><span>那年今日</span></div>
+          <div class="quick" onclick="openOv('ov-share')"><div class="ico" style="background:#FDEAE6;color:#D94B3F"><svg class="ic"><use href="#ic-share"/></svg></div><span>内容分享</span></div>
         </div>
 
         <div class="section-title"><h3>本月 · 成长月报</h3><a onclick="openOv('ov-report')">查看完整 ›</a></div>
@@ -1092,7 +1162,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
         <div class="section-title"><h3>那年今日 · 家庭纪念</h3><a onclick="openOv('ov-memory')">全部回忆 ›</a></div>
         <div class="card memory-card" onclick="openOv('ov-memory')">
-          <div class="mc-photo">🏖️</div>
+          <div class="mc-photo"><img class="img-cover" src="assets/pets/doudou.jpg" alt="豆豆回忆"></div>
           <div style="flex:1">
             <h5>2025-08-28 · 豆豆第一次去海边</h5>
             <p>浪花、奔跑，还有一张湿漉漉的笑脸</p>
@@ -1104,27 +1174,27 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         <div class="timeline" id="timeline">
           <div class="tl-item b">
             <div class="tl-date">2026-08-28</div>
-            <div class="tl-box"><b>🎬 第一支AI数字角色影片</b><p>「豆豆的夏日首映」生成完成，AI识别为金毛寻回犬并自动建档。</p></div>
+            <div class="tl-box"><b><svg class="ic"><use href="#ic-video"/></svg>第一支AI数字角色影片</b><p>「豆豆的夏日首映」生成完成，AI识别为金毛寻回犬并自动建档。</p></div>
           </div>
           <div class="tl-item g">
             <div class="tl-date">2026-08-20</div>
-            <div class="tl-box"><b>🏥 年度体检完成</b><p>健康之都·宠物医院旗舰院，基础健康评估全部通过，病历已同步至数字档案。</p></div>
+            <div class="tl-box"><b><svg class="ic"><use href="#ic-hospital"/></svg>年度体检完成</b><p>健康之都·宠物医院旗舰院，基础健康评估全部通过，病历已同步至数字档案。</p></div>
           </div>
           <div class="tl-item">
             <div class="tl-date">2025-08-28</div>
-            <div class="tl-box"><b>🏖️ 第一次去海边</b><p>家庭纪念日，已收录进「那年今日」回忆集。</p></div>
+            <div class="tl-box"><b><svg class="ic"><use href="#ic-sparkle"/></svg>第一次去海边</b><p>家庭纪念日，已收录进「那年今日」回忆集。</p></div>
           </div>
           <div class="tl-item g">
             <div class="tl-date">2024-01-01</div>
-            <div class="tl-box"><b>🎂 周岁生日</b><p>第一次数字首映礼，全家一起看豆豆的电影。</p></div>
+            <div class="tl-box"><b><svg class="ic"><use href="#ic-cake"/></svg>周岁生日</b><p>第一次数字首映礼，全家一起看豆豆的电影。</p></div>
           </div>
           <div class="tl-item b">
             <div class="tl-date">2023-06-15</div>
-            <div class="tl-box"><b>💉 首针疫苗</b><p>健康节点已记录，后续提醒已开启。</p></div>
+            <div class="tl-box"><b><svg class="ic"><use href="#ic-plus"/></svg>首针疫苗</b><p>健康节点已记录，后续提醒已开启。</p></div>
           </div>
           <div class="tl-item">
             <div class="tl-date">2023-05-20</div>
-            <div class="tl-box"><b>🏡 到家日</b><p>豆豆加入这个家，数字档案从此开始。</p></div>
+            <div class="tl-box"><b><svg class="ic"><use href="#ic-home"/></svg>到家日</b><p>豆豆加入这个家，数字档案从此开始。</p></div>
           </div>
         </div>
 
@@ -1144,7 +1214,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 我的 ============ -->
       <section class="screen" id="screen-me">
         <div class="topbar">
-          <div class="loc">👤 我的 <span>浪动号 LD·000123</span></div>
+          <div class="loc"><svg class="ic" style="width:15px;height:15px;color:var(--brand1)"><use href="#ic-user"/></svg>我的 <span>浪动号 LD·000123</span></div>
           <div class="iconbtn" onclick="openOv('ov-about')">ⓘ</div>
         </div>
 
@@ -1160,40 +1230,40 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
         <div class="me-list" style="margin-top:14px">
           <div class="me-row" onclick="openOv('ov-idcard')">
-            <div class="ico" style="background:#E7E9FF;color:#6B5AE8"><svg class="ic"><use href="#ic-idcard"/></svg></div>
+            <div class="ico" style="background:#E7F4FF;color:#2E78C2"><svg class="ic"><use href="#ic-idcard"/></svg></div>
             <div class="txt"><b>宠物数字身份证</b><span>豆豆 · LD-2026-01020345</span></div>
             <span class="arrow">›</span>
           </div>
           <div class="me-row" onclick="openOv('ov-member')">
-            <div class="ico" style="background:#FFE9DE;color:#E86A3C"><svg class="ic"><use href="#ic-member"/></svg></div>
+            <div class="ico" style="background:#FDEAE6;color:#D94B3F"><svg class="ic"><use href="#ic-member"/></svg></div>
             <div class="txt"><b>会员中心</b><span>线上公开课 · 宠物专场 · 在线解答</span></div>
             <span class="arrow">›</span>
           </div>
           <div class="me-row" onclick="goTab('market')">
-            <div class="ico" style="background:#E4F8F2;color:#0E8B70"><svg class="ic"><use href="#ic-wallet"/></svg></div>
+            <div class="ico" style="background:#E1F4EC;color:#0B8A69"><svg class="ic"><use href="#ic-wallet"/></svg></div>
             <div class="txt"><b>我的资产 · 云市场</b><span id="me-asset-text">暂无上架资产 · 上传AI视频素材后获得分成</span></div>
             <span class="arrow">›</span>
           </div>
           <div class="me-row" onclick="openOv('ov-hospital')">
-            <div class="ico" style="background:#DFF6FF;color:#1E88C8"><svg class="ic"><use href="#ic-hospital"/></svg></div>
+            <div class="ico" style="background:#E2F4FA;color:#178CB0"><svg class="ic"><use href="#ic-hospital"/></svg></div>
             <div class="txt"><b>宠物医院</b><span>会员价 · 病历同步 · 健康之都合作网络</span></div>
             <span class="arrow">›</span>
           </div>
           <div class="me-row" onclick="openOv('ov-groom')">
-            <div class="ico" style="background:#FFF0D1;color:#C88A00"><svg class="ic"><use href="#ic-groom"/></svg></div>
+            <div class="ico" style="background:#FFF3D9;color:#B07A00"><svg class="ic"><use href="#ic-groom"/></svg></div>
             <div class="txt"><b>宠物洗护预约</b><span>合作会所 · 到店核销 · 会员9折</span></div>
             <span class="arrow">›</span>
           </div>
           <div class="me-row" onclick="openOv('ov-about')">
-            <div class="ico" style="background:#F2EDFB;color:#7A4BFF"><svg class="ic"><use href="#ic-info"/></svg></div>
+            <div class="ico" style="background:#EAF7D9;color:#5F8E0E"><svg class="ic"><use href="#ic-info"/></svg></div>
             <div class="txt"><b>关于浪动</b><span>以宠物数字身份为核心的内容与IP平台</span></div>
             <span class="arrow">›</span>
           </div>
         </div>
 
         <div class="section-title"><h3>健康之都生态</h3></div>
-        <div class="card" style="padding:14px;display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#F3E9FF,#E7E9FF)">
-          <div style="font-size:32px">🏙️</div>
+        <div class="card" style="padding:14px;display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#E7F5EF,#E7F4FA)">
+          <div style="width:52px;height:52px;border-radius:14px;background:#DDF1E9;display:flex;align-items:center;justify-content:center;color:var(--brand1)"><svg class="ic" style="width:26px;height:26px"><use href="#ic-pin"/></svg></div>
           <div>
             <b style="font-size:13px">中国宠物健康之都 · 城市生态</b>
             <p style="font-size:10px;color:#6D6790;margin-top:3px">医院 / 会所 / 文旅 / 活动权益，一张卡连接本地宠物生活服务。</p>
@@ -1212,7 +1282,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 新用户建档 / AI识别 / 免费生成视频 ============ -->
       <div class="overlay" id="ov-onboard">
         <div class="ov-head">
-          <button class="back" onclick="closeOv('ov-onboard')">✕</button>
+          <button class="back" onclick="closeOv('ov-onboard')"><svg class="ic" style="width:15px;height:15px"><use href="#ic-close"/></svg></button>
           <h3>宠物数字身份</h3>
         </div>
         <div class="ov-scroll" id="onboard-scroll">
@@ -1222,13 +1292,12 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div class="ob-title">上传宠物照片<br>创建数字身份</div>
             <p class="ob-sub">AI 将自动识别宠物的<b>类型与品种</b>，并生成专属数字档案。</p>
             <div class="photo-box" id="photo-box">
-              <img class="photo-img" id="photo-img" src="assets/pets/doudou.jpg" style="display:none" alt="宠物照片">
-              <span class="big" id="photo-big">🐶</span>
+              <img class="photo-img" id="photo-img" src="assets/pets/doudou.jpg" alt="宠物照片">
               <p id="photo-tip">点击下方按钮选择照片</p>
             </div>
             <div class="ob-btns">
-              <button class="btn btn-primary" style="flex:1" onclick="pickPhoto()">📁 从相册选择</button>
-              <button class="btn btn-ghost" style="flex:1" onclick="pickPhoto()">📷 立即拍摄</button>
+              <button class="btn btn-primary" style="flex:1" onclick="pickPhoto()"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-image"/></svg> 从相册选择</button>
+              <button class="btn btn-ghost" style="flex:1" onclick="pickPhoto()"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-camera"/></svg> 立即拍摄</button>
             </div>
             <div style="margin-top:18px">
               <button class="btn btn-primary btn-block" id="ob-scan-btn" disabled onclick="obScan()">开始 AI 识别</button>
@@ -1255,7 +1324,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
           <!-- 步骤3：识别结果 -->
           <div class="ob-panel" id="ob-result">
-            <div class="ob-title">识别成功！🎉</div>
+            <div class="ob-title">识别成功！</div>
             <p class="ob-sub">已为你匹配宠物品种数据库，置信度极高。</p>
             <div class="result-card">
               <div class="rc-top">
@@ -1286,7 +1355,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           <div class="ob-panel" id="ob-free">
             <div style="min-height:70vh;display:flex;align-items:center">
               <div class="free-dialog">
-                <span class="fd-emoji">🎬</span>
+                <span class="fd-emoji"><svg class="ic" style="width:28px;height:28px"><use href="#ic-movie"/></svg></span>
                 <h4>免费生成 AI 宠物视频？</h4>
                 <p>将基于豆豆的数字角色生成第一支专属 AI 宠物视频，新用户<b style="color:var(--brand2)">首支免费</b>。</p>
                 <span class="price-tag">原价 ¥19.9 · 本次 0 元</span>
@@ -1310,13 +1379,13 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             </div>
             <div class="ob-progress" style="max-width:300px;margin-left:auto;margin-right:auto"><i id="pf-bar"></i></div>
             <div class="success-card" id="pf-success" style="display:none">
-              <div class="sc-icon">✅</div>
+              <div class="sc-icon"><svg class="ic" style="width:30px;height:30px"><use href="#ic-check"/></svg></div>
               <h4>建档成功！</h4>
               <p>豆豆 · 金毛寻回犬</p>
               <div class="id-num">数字身份证 LD-2026-01020345</div>
               <p style="margin-top:8px">数字身份证已自动签发，成长档案已初始化。</p>
               <div class="fd-actions">
-                <button class="btn btn-primary btn-block" onclick="showOb('ob-gen');obGen()">🎬 开始生成AI视频</button>
+                <button class="btn btn-primary btn-block" onclick="showOb('ob-gen');obGen()"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-movie"/></svg> 开始生成AI视频</button>
                 <button class="btn btn-ghost btn-block" onclick="openOv('ov-idcard')">查看数字身份证</button>
               </div>
             </div>
@@ -1327,7 +1396,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div class="ob-title">AI 视频生成中…</div>
             <p class="ob-sub">为豆豆编写专属剧本并渲染数字角色影片，约需 1 分钟。</p>
             <div class="player" style="margin-top:24px">
-              <div class="pl-bg"><span class="glow"></span><span class="big" id="gen-emoji">🎬</span></div>
+              <div class="pl-bg"><span class="glow"></span><span class="big" id="gen-emoji"><svg class="ic" style="width:34px;height:34px;color:var(--gold)"><use href="#ic-sparkle"/></svg></span></div>
               <div class="pl-bottom">
                 <div class="pl-title">正在渲染「豆豆的夏日首映」</div>
                 <div class="pl-sub" id="gen-step-text">重建数字角色…</div>
@@ -1347,7 +1416,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
           <!-- 步骤7：视频素材 -->
           <div class="ob-panel" id="ob-video">
-            <div class="ob-title">你的 AI 宠物视频已生成 🎉</div>
+            <div class="ob-title">你的 AI 宠物视频已生成</div>
             <p class="ob-sub">豆豆的数字角色影片 · 可播放、可分享、可上传云市场成为个人资产。</p>
             <div class="player" style="margin-top:22px" id="ob-player">
               <div class="pl-bg"><span class="glow"></span><video id="demo-video" class="photo-img" src="assets/videos/naicha.mp4" poster="assets/pets/doudou.jpg" playsinline preload="none"></video></div>
@@ -1365,10 +1434,10 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
               <span class="chip">模板：夏日首映</span>
             </div>
             <div style="margin-top:18px">
-              <button class="btn btn-primary btn-block" onclick="closeOv('ov-onboard');openOv('ov-asset-confirm')">☁️ 上传云市场 · 成为个人资产</button>
+              <button class="btn btn-primary btn-block" onclick="closeOv('ov-onboard');openOv('ov-asset-confirm')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-upload"/></svg> 上传云市场 · 成为个人资产</button>
               <div style="display:flex;gap:10px;margin-top:10px">
-                <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')">📤 分享</button>
-                <button class="btn btn-ghost" style="flex:1" onclick="toast('已开始生成下一支（演示）')">✨ 再生成一支</button>
+                <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-share"/></svg> 分享</button>
+                <button class="btn btn-ghost" style="flex:1" onclick="toast('已开始生成下一支（演示）')"><svg class="ic" style="width:15px;height:15px;color:#FFB92E"><use href="#ic-sparkle"/></svg> 再生成一支</button>
               </div>
               <button class="btn" style="width:100%;margin-top:10px;color:var(--muted)" onclick="finishOnboard()">完成 · 回首页</button>
             </div>
@@ -1380,7 +1449,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 云市场 · 资产确权 ============ -->
       <div class="dialog-mask" id="ov-asset-confirm">
         <div class="dialog">
-          <h4>📜 资产确权与分成协议</h4>
+          <h4><svg class="ic" style="width:16px;height:16px;color:var(--brand1);margin-right:5px"><use href="#ic-idcard"/></svg>资产确权与分成协议</h4>
           <p>将「豆豆的夏日首映」上传至云市场前，请确认以下权益规则：</p>
           <div class="agree-list">
             <label><input type="checkbox" checked> 上传后该素材将成为<b>你的个人数字资产</b>，归属清晰。</label>
@@ -1398,7 +1467,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 上架成功 ============ -->
       <div class="dialog-mask" id="ov-asset-success">
         <div class="dialog" style="text-align:center">
-          <div class="sc-icon" style="width:64px;height:64px;border-radius:50%;background:#DFF8F1;color:#0E9B78;font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;animation:pop .5s ease">✅</div>
+          <div class="sc-icon" style="width:64px;height:64px;border-radius:50%;background:#DFF8F1;color:#0E9B78;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;animation:pop .5s ease"><svg class="ic" style="width:30px;height:30px"><use href="#ic-check"/></svg></div>
           <h4>已上架云市场</h4>
           <p>「豆豆的夏日首映」已成为你的<b style="color:var(--brand2)">个人数字资产</b>，将获得点赞与下载分成。</p>
           <div class="id-num" style="font-size:12px">分成规则：点赞 ¥0.01/次 · 下载使用 ¥2.00/次</div>
@@ -1412,7 +1481,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
       <!-- ============ 下载他人素材 ============ -->
       <div class="dialog-mask" id="ov-download">
         <div class="dialog">
-          <h4>⬇ 下载并使用该素材</h4>
+          <h4><svg class="ic" style="width:16px;height:16px;color:var(--brand1);margin-right:5px"><use href="#ic-download"/></svg>下载并使用该素材</h4>
           <p>下载后可用于个人欣赏与社交分享；如需商业用途，请联系创作者签署授权。</p>
           <div class="id-num" style="font-size:13px;text-align:center;margin-top:12px">下载费用 ¥2.00<br><span style="font-size:10px;color:var(--muted)">创作者获得分成 ¥2.00</span></div>
           <div class="fd-actions">
@@ -1430,7 +1499,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         </div>
         <div class="ov-scroll">
           <div class="player" style="margin-top:6px">
-            <div class="pl-bg" id="play-bg"><span class="glow"></span><img class="photo-img" id="play-img" style="display:none" alt="视频封面"><span class="big" id="play-emoji">🐱</span></div>
+            <div class="pl-bg" id="play-bg"><span class="glow"></span><img class="photo-img" id="play-img" style="display:none" alt="视频封面"><span class="big" id="play-emoji"><svg class="ic" style="width:36px;height:36px;color:#fff"><use href="#ic-paw"/></svg></span></div>
             <button class="pl-play" onclick="toast('正在播放（演示）')">▶</button>
             <div class="pl-bottom">
               <div class="pl-title" id="play-name">AI宠物影片</div>
@@ -1446,8 +1515,8 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div style="display:flex;justify-content:space-between;padding:7px 0;font-size:12px"><span style="color:var(--muted)">分成状态</span><b style="color:#0E9B78">创作者已开启分成</b></div>
           </div>
           <div style="display:flex;gap:10px;margin-top:16px">
-            <button class="btn btn-primary" style="flex:1" onclick="closeOv('ov-play');openOv('ov-download')">⬇ 下载使用</button>
-            <button class="btn btn-ghost" style="flex:1" onclick="closeOv('ov-play');openOv('ov-share')">📤 分享</button>
+            <button class="btn btn-primary" style="flex:1" onclick="closeOv('ov-play');openOv('ov-download')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-download"/></svg> 下载使用</button>
+            <button class="btn btn-ghost" style="flex:1" onclick="closeOv('ov-play');openOv('ov-share')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-share"/></svg> 分享</button>
           </div>
         </div>
       </div>
@@ -1458,7 +1527,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         <div class="cinema-top">
           <button class="back" onclick="closeOv('ov-cinema')">←</button>
           <span>浪动影院 · 和任何宠物一起看电影</span>
-          <button class="back" onclick="openOv('ov-share')">📤</button>
+          <button class="back" onclick="openOv('ov-share')"><svg class="ic" style="width:16px;height:16px"><use href="#ic-share"/></svg></button>
         </div>
         <div class="ov-scroll" style="padding-top:0">
           <div class="poster-wrap">
@@ -1466,7 +1535,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
               <span class="p-tag">全城首映 · 敬请期待</span>
               <h2>《毛球放映厅》<br>全城宠物大电影</h2>
               <p class="p-sub">所有有意思的 AI 宠物视频合集 · 每一只宠物都是主角</p>
-              <span class="p-emoji">🐶🎬</span>
+              <span class="p-emoji"><svg class="ic" style="width:62px;height:62px;color:#FFD166"><use href="#ic-movie"/></svg></span>
               <p class="p-date">首映礼 2026-10-01 20:00 · 健康之都 · 宠物电影节</p>
             </div>
             <div class="cinema-cd">
@@ -1480,7 +1549,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             </div>
           </div>
 
-          <div class="cin-title">🎞️ 首映片单 · AI宠物视频合集</div>
+          <div class="cin-title"><svg class="ic" style="width:16px;height:16px;color:var(--gold);vertical-align:-2px;margin-right:4px"><use href="#ic-movie"/></svg>首映片单 · AI宠物视频合集</div>
           <div class="cin-list">
             <div class="cin-item" onclick="toast('预告片播放中…（演示）')">
               <div class="cover" style="background:linear-gradient(135deg,#FFE3C2,#FFC4A8)"><img class="img-cover" src="assets/pets/cat-afei.jpg" alt="橘猫阿福"></div>
@@ -1491,7 +1560,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
               <div class="m"><b>柯基旺财巡山日记</b><span>03:12</span></div>
             </div>
             <div class="cin-item" onclick="toast('预告片播放中…（演示）')">
-              <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"><span class="badge" style="position:absolute;left:6px;top:6px;z-index:2">🐰</span></div>
+              <div class="cover" style="background:linear-gradient(135deg,#FFE6EE,#F3C6E0)"><img class="img-cover" src="assets/pets/cat-new1.jpg" alt="兔兔奶糖"></div>
               <div class="m"><b>兔兔奶糖的生日派对</b><span>02:48</span></div>
             </div>
             <div class="cin-item" onclick="toast('预告片播放中…（演示）')">
@@ -1501,7 +1570,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           </div>
 
           <div class="ticket">
-            <div class="t-head"><b>🎫 首映礼电子票</b><span>已生成</span></div>
+            <div class="t-head"><b><svg class="ic" style="width:14px;height:14px;color:var(--brand1);vertical-align:-2px;margin-right:3px"><use href="#ic-ticket"/></svg>首映礼电子票</b><span>已生成</span></div>
             <div class="t-body">
               <div class="t-meta">
                 <div><b>《毛球放映厅》</b><span>全城宠物大电影</span></div>
@@ -1513,7 +1582,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             </div>
           </div>
           <div class="cinema-cta">
-            <button class="btn btn-primary btn-block" onclick="toast('购票成功，票已存入电子票夹（演示）')">🎟️ 立即购票 · ¥39.9</button>
+            <button class="btn btn-primary btn-block" onclick="toast('购票成功，票已存入电子票夹（演示）')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-ticket"/></svg> 立即购票 · ¥39.9</button>
             <p class="note" style="color:rgba(255,255,255,.45)">首映季线上片单 + 季度线下宠物电影节 + 每只宠物的首映礼</p>
           </div>
         </div>
@@ -1530,7 +1599,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div class="idcard">
               <div class="id-top">
                 <div class="id-brand">
-                  <div class="id-logo">🌊</div>
+                  <div class="id-logo"><svg class="ic"><use href="#ic-paw"/></svg></div>
                   <div><b>浪动宠物</b><span>LANGDONG PET · 数字身份中心</span></div>
                 </div>
                 <span class="id-title">宠物数字身份证</span>
@@ -1555,12 +1624,12 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
               </div>
             </div>
             <div class="id-note">
-              ✅ AI角色认证已通过物种标准校验<br>
+              <svg class="ic" style="width:13px;height:13px;color:var(--brand1);vertical-align:-2px"><use href="#ic-check"/></svg> AI角色认证已通过物种标准校验<br>
               本卡为豆豆的数字身份凭证，用于建档、内容创作、健康服务同步与商业化授权。
             </div>
             <div style="display:flex;gap:10px;margin-top:14px">
               <button class="btn btn-primary" style="flex:1" onclick="openOv('ov-member')">开通会员 · 升级档案</button>
-              <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')">📤 分享身份证</button>
+              <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-share"/></svg> 分享身份证</button>
             </div>
             <p class="note">宠物数字身份证：给每一只宠物如同人类身份证一样的认同感。</p>
           </div>
@@ -1575,7 +1644,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         </div>
         <div class="ov-scroll">
           <div class="member-hero">
-            <h4>👑 浪动数字会员</h4>
+            <h4><svg class="ic" style="width:16px;height:16px;color:var(--gold);margin-right:5px"><use href="#ic-member"/></svg>浪动数字会员</h4>
             <p>记录成长 + 专业养宠指导 + 医院服务 + 生活权益 + 城市活动资格</p>
             <span class="chip gold" style="margin-top:9px">当前：免费体验版 · 立即升级</span>
           </div>
@@ -1609,32 +1678,32 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           <div class="section-title"><h3>会员专属权益</h3></div>
           <div class="benefit-grid">
             <div class="benefit">
-              <div class="b-ico" style="background:#FFE9DE">🎓</div>
+              <div class="b-ico" style="background:#E1F4EC"><svg class="ic"><use href="#ic-graduation"/></svg></div>
               <b>线上公开课</b>
               <p>每月 2 场专家直播：营养、行为、训练与老龄护理，支持回放。</p>
             </div>
             <div class="benefit">
-              <div class="b-ico" style="background:#E7E9FF">🎪</div>
+              <div class="b-ico" style="background:#E7F4FF"><svg class="ic"><use href="#ic-paw"/></svg></div>
               <b>宠物专场</b>
               <p>犬 / 猫 / 异宠物种专场，专家针对豆豆的品种与生命阶段授课。</p>
             </div>
             <div class="benefit">
-              <div class="b-ico" style="background:#E4F8F2">💬</div>
+              <div class="b-ico" style="background:#EAF7D9"><svg class="ic"><use href="#ic-chat"/></svg></div>
               <b>营养/行为在线解答</b>
               <p>专属专家问答通道，48 小时内回复，问题沉淀进宠物档案。</p>
             </div>
             <div class="benefit">
-              <div class="b-ico" style="background:#DFF6FF">🏥</div>
+              <div class="b-ico" style="background:#E2F4FA"><svg class="ic"><use href="#ic-hospital"/></svg></div>
               <b>医院优惠 + 病历打通</b>
               <p>合作医院会员价与优先预约，病历经授权同步至数字档案。</p>
             </div>
             <div class="benefit">
-              <div class="b-ico" style="background:#FFF0D1">🛁</div>
+              <div class="b-ico" style="background:#FFF3D9"><svg class="ic"><use href="#ic-groom"/></svg></div>
               <b>会所洗护体验</b>
               <p>合作宠物会所美容、洗护、训练体验权益，到店核销。</p>
             </div>
             <div class="benefit">
-              <div class="b-ico" style="background:#F2EDFB">🎬</div>
+              <div class="b-ico" style="background:#F3ECFF"><svg class="ic"><use href="#ic-movie"/></svg></div>
               <b>活动优先报名</b>
               <p>电影节、运动会、宠物市集与主题派对优先报名与专属座位。</p>
             </div>
@@ -1655,14 +1724,14 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         </div>
         <div class="ov-scroll">
           <div class="hosp-sync">
-            <div class="hico">🩺</div>
+            <div class="hico"><svg class="ic"><use href="#ic-hospital"/></svg></div>
             <div class="txt">
               <b>病历与数字档案打通</b>
               <p id="hosp-sync-text">未授权同步。开启后，经授权的医院病历将自动归档进豆豆的成长档案。</p>
             </div>
             <div class="switch" id="hosp-switch" onclick="toggleHosp(this)"></div>
           </div>
-          <p class="note" id="hosp-note" style="display:none;color:#0E8B70">✅ 已同步：2026-08-20 年度体检报告 · 健康状态良好</p>
+          <p class="note" id="hosp-note" style="display:none;color:#0E8B70">已同步：2026-08-20 年度体检报告 · 健康状态良好</p>
 
           <div class="section-title"><h3>会员专享优惠</h3></div>
           <div class="coupon">
@@ -1683,22 +1752,22 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
           <div class="section-title"><h3>健康之都 · 合作医院</h3></div>
           <div class="hospital-row">
-            <div class="h-photo">🏥</div>
+            <div class="h-photo"><svg class="ic"><use href="#ic-hospital"/></svg></div>
             <div class="txt"><b>健康之都·宠物医院旗舰院</b><p>3.5km · 三甲合作 · 可同步病历</p></div>
             <span class="rate">★ 4.9</span>
           </div>
           <div class="hospital-row">
-            <div class="h-photo">🩺</div>
+            <div class="h-photo"><svg class="ic"><use href="#ic-plus"/></svg></div>
             <div class="txt"><b>爱宠综合门诊</b><p>1.2km · 犬猫专科 · 可同步病历</p></div>
             <span class="rate">★ 4.7</span>
           </div>
           <div class="hospital-row">
-            <div class="h-photo">🎓</div>
+            <div class="h-photo"><svg class="ic"><use href="#ic-graduation"/></svg></div>
             <div class="txt"><b>扬大宠物医疗中心</b><p>5.8km · 专家会诊 · 可同步病历</p></div>
             <span class="rate">★ 4.8</span>
           </div>
           <div style="margin-top:18px">
-            <button class="btn btn-primary btn-block" onclick="toast('预约成功，已同步至成长档案（演示）')">📅 预约挂号</button>
+            <button class="btn btn-primary btn-block" onclick="toast('预约成功，已同步至成长档案（演示）')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-memory"/></svg> 预约挂号</button>
           </div>
           <p class="note">浪动不替代兽医诊疗机构，不对疾病进行自动诊断或治疗承诺。</p>
         </div>
@@ -1711,8 +1780,8 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           <h3>宠物洗护预约</h3>
         </div>
         <div class="ov-scroll">
-          <div class="grow-hero" style="background:linear-gradient(135deg,#FFF0D1,#FFE9DE)">
-            <div class="gh-ava" style="box-shadow:0 4px 10px rgba(255,181,61,.2)">🛁</div>
+          <div class="grow-hero" style="background:linear-gradient(135deg,#EAF5F0,#EDF7FA)">
+            <div class="gh-ava" style="box-shadow:0 4px 10px rgba(15,42,33,.12)"><svg class="ic"><use href="#ic-groom"/></svg></div>
             <div>
               <h4>豆豆 · 洗护服务</h4>
               <p>合作会所 · 会员 9 折 · 到店核销 · 服务记录写入成长档案</p>
@@ -1720,9 +1789,9 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           </div>
           <div class="section-title"><h3>选择服务</h3></div>
           <div class="svc-row">
-            <div class="svc-opt on" onclick="pickSvc(this,'¥88')"><span class="emoji">🧼</span><b>基础洗护</b><span class="p">¥88</span><span class="t">约30分钟</span></div>
-            <div class="svc-opt" onclick="pickSvc(this,'¥168')"><span class="emoji">💆</span><b>深层SPA</b><span class="p">¥168</span><span class="t">约60分钟</span></div>
-            <div class="svc-opt" onclick="pickSvc(this,'¥128')"><span class="emoji">✂️</span><b>造型修剪</b><span class="p">¥128</span><span class="t">约50分钟</span></div>
+            <div class="svc-opt on" onclick="pickSvc(this,'¥88')"><span class="emoji"><svg class="ic"><use href="#ic-groom"/></svg></span><b>基础洗护</b><span class="p">¥88</span><span class="t">约30分钟</span></div>
+            <div class="svc-opt" onclick="pickSvc(this,'¥168')"><span class="emoji"><svg class="ic"><use href="#ic-heart"/></svg></span><b>深层SPA</b><span class="p">¥168</span><span class="t">约60分钟</span></div>
+            <div class="svc-opt" onclick="pickSvc(this,'¥128')"><span class="emoji"><svg class="ic"><use href="#ic-scissors"/></svg></span><b>造型修剪</b><span class="p">¥128</span><span class="t">约50分钟</span></div>
           </div>
           <div class="section-title"><h3>选择日期</h3></div>
           <div class="chips-row">
@@ -1778,13 +1847,13 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
           <div class="section-title"><h3>本月大事记</h3></div>
           <div class="card" style="padding:14px">
             <div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)">
-              <span style="font-size:20px">🖐️</span><div><b style="font-size:13px">学会握手</b><p style="font-size:10px;color:var(--muted);margin-top:2px">08-12 · 里程碑已收录</p></div>
+              <span style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#DDF1E9;color:var(--brand1)"><svg class="ic" style="width:17px;height:17px"><use href="#ic-paw"/></svg></span><div><b style="font-size:13px">学会握手</b><p style="font-size:10px;color:var(--muted);margin-top:2px">08-12 · 里程碑已收录</p></div>
             </div>
             <div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--line)">
-              <span style="font-size:20px">🎬</span><div><b style="font-size:13px">第一支AI数字角色影片</b><p style="font-size:10px;color:var(--muted);margin-top:2px">08-28 · 已上架云市场</p></div>
+              <span style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#DDF1E9;color:var(--brand1)"><svg class="ic" style="width:17px;height:17px"><use href="#ic-video"/></svg></span><div><b style="font-size:13px">第一支AI数字角色影片</b><p style="font-size:10px;color:var(--muted);margin-top:2px">08-28 · 已上架云市场</p></div>
             </div>
             <div style="display:flex;gap:10px;align-items:center;padding:8px 0">
-              <span style="font-size:20px">🏥</span><div><b style="font-size:13px">年度体检通过</b><p style="font-size:10px;color:var(--muted);margin-top:2px">08-20 · 病历已同步数字档案</p></div>
+              <span style="width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#DDF1E9;color:var(--brand1)"><svg class="ic" style="width:17px;height:17px"><use href="#ic-hospital"/></svg></span><div><b style="font-size:13px">年度体检通过</b><p style="font-size:10px;color:var(--muted);margin-top:2px">08-20 · 病历已同步数字档案</p></div>
             </div>
           </div>
 
@@ -1793,8 +1862,8 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             这个月，豆豆从一只安静的狗狗变成了家里的「小导演」：第一次拥有自己的 AI 数字角色，第一次拍电影，第一次在海边撒欢被记录成家庭纪念。活跃度与互动质量都在稳步提升，建议下月多安排一次游泳与一次行为训练课。
           </div>
           <div style="display:flex;gap:10px;margin-top:18px">
-            <button class="btn btn-primary" style="flex:1" onclick="toast('已提交生成，完成后将推送到成长档案（演示）')">🎬 生成纪念短片</button>
-            <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')">📤 分享月报</button>
+            <button class="btn btn-primary" style="flex:1" onclick="toast('已提交生成，完成后将推送到成长档案（演示）')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-movie"/></svg> 生成纪念短片</button>
+            <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-share"/></svg> 分享月报</button>
           </div>
           <p class="note">月报数据来自成长档案与健康节点，仅供记录参考，不构成诊疗建议。</p>
         </div>
@@ -1808,26 +1877,26 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         </div>
         <div class="ov-scroll">
           <div class="card memory-card" style="margin-top:4px">
-            <div class="mc-photo">🏖️</div>
+            <div class="mc-photo"><img class="img-cover" src="assets/pets/doudou.jpg" alt="豆豆回忆"></div>
             <div style="flex:1">
               <h5>2025-08-28 · 豆豆第一次去海边</h5>
               <p>那天浪花很大，豆豆追了 40 分钟水，回家在车里睡着了。</p>
             </div>
           </div>
           <div style="display:flex;gap:10px;margin-top:14px">
-            <button class="btn btn-primary" style="flex:1" onclick="toast('纪念影片生成中…（演示）')">🎬 生成纪念影片</button>
-            <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')">📤 分享</button>
+            <button class="btn btn-primary" style="flex:1" onclick="toast('纪念影片生成中…（演示）')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-movie"/></svg> 生成纪念影片</button>
+            <button class="btn btn-ghost" style="flex:1" onclick="openOv('ov-share')"><svg class="ic" style="width:15px;height:15px;color:#009E7C"><use href="#ic-share"/></svg> 分享</button>
           </div>
           <div class="divider"></div>
           <h4 style="font-size:15px;font-weight:800;margin-bottom:12px">全部家庭回忆</h4>
           <div class="card" style="padding:4px 14px">
             <div style="display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line)">
-              <div class="mc-photo" style="width:50px;height:50px;font-size:24px">⛺</div>
+              <div class="mc-photo" style="width:50px;height:50px"><img class="img-cover" src="assets/pets/doudou.jpg" alt="露营回忆"></div>
               <div style="flex:1"><b style="font-size:13px">2024-08-28 · 第一次露营</b><p style="font-size:10px;color:var(--muted);margin-top:2px">在帐篷里挤成一团看星星</p></div>
               <span style="font-size:14px;color:#C6BFDB">›</span>
             </div>
             <div style="display:flex;gap:12px;align-items:center;padding:12px 0">
-              <div class="mc-photo" style="width:50px;height:50px;font-size:24px">🎂</div>
+              <div class="mc-photo" style="width:50px;height:50px"><img class="img-cover" src="assets/pets/doudou.jpg" alt="生日回忆"></div>
               <div style="flex:1"><b style="font-size:13px">2023-08-28 · 到家第100天</b><p style="font-size:10px;color:var(--muted);margin-top:2px">学会了坐下和握手</p></div>
               <span style="font-size:14px;color:#C6BFDB">›</span>
             </div>
@@ -1847,9 +1916,9 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
             <div class="field">
               <label>记录类型</label>
               <div class="type-chips">
-                <span class="type-chip on" onclick="pickType(this)">📷 照片</span>
-                <span class="type-chip" onclick="pickType(this)">🎬 视频</span>
-                <span class="type-chip" onclick="pickType(this)">📝 文字</span>
+                <span class="type-chip on" onclick="pickType(this)"><svg class="ic"><use href="#ic-camera"/></svg>照片</span>
+                <span class="type-chip" onclick="pickType(this)"><svg class="ic"><use href="#ic-video"/></svg>视频</span>
+                <span class="type-chip" onclick="pickType(this)"><svg class="ic"><use href="#ic-pencil"/></svg>文字</span>
               </div>
             </div>
             <div class="field">
@@ -1872,14 +1941,14 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
 
       <!-- ============ 内容分享 ============ -->
       <div class="dialog-mask" id="ov-share">
-        <div class="sheet" style="position:relative;border-radius:24px;width:100%;max-width:350px">
+        <div class="sheet" style="position:relative;border-radius:8px;width:100%;max-width:350px">
           <h4>分享到</h4>
           <div class="share-grid">
-            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#E4F8E2">💬</div>微信好友</div>
-            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#F2EDFB">🟢</div>朋友圈</div>
-            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#DFF6FF">🐧</div>QQ</div>
-            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#FFF0D1">🔗</div>复制链接</div>
-            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#FFE9DE">🖼️</div>保存海报</div>
+            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#E4F8E2"><svg class="ic"><use href="#ic-chat"/></svg></div>微信好友</div>
+            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#F2EDFB"><svg class="ic"><use href="#ic-users"/></svg></div>朋友圈</div>
+            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#DFF6FF"><svg class="ic"><use href="#ic-user"/></svg></div>QQ</div>
+            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#FFF0D1"><svg class="ic"><use href="#ic-link"/></svg></div>复制链接</div>
+            <div class="share-item" onclick="shareTo()"><div class="s-ico" style="background:#FFE9DE"><svg class="ic"><use href="#ic-image"/></svg></div>保存海报</div>
           </div>
           <button class="btn btn-ghost btn-block" onclick="closeOv('ov-share')">取消</button>
         </div>
@@ -1893,7 +1962,7 @@ body{background:linear-gradient(160deg,#F7F9FE 0%,#F1F4FB 45%,#EDF1FA 100%)}
         </div>
         <div class="ov-scroll">
           <div style="text-align:center;padding-top:20px">
-            <div style="width:72px;height:72px;border-radius:24px;background:linear-gradient(135deg,var(--brand1),var(--brand2));display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto">🌊</div>
+            <div style="width:72px;height:72px;border-radius:24px;background:linear-gradient(135deg,var(--brand1),var(--brand2));display:flex;align-items:center;justify-content:center;margin:0 auto"><svg class="ic" style="width:32px;height:32px;color:#fff"><use href="#ic-paw"/></svg></div>
             <h3 style="font-size:20px;font-weight:900;margin-top:14px">浪动科技</h3>
             <p style="font-size:12px;color:var(--muted);margin-top:6px;line-height:1.7">以宠物数字身份为核心的内容、产品与 IP 商业化平台<br>「和任何宠物一起看电影」</p>
           </div>
@@ -1966,9 +2035,7 @@ function startOnboard(){
 }
 function resetOnboard(){
   const pb=$('#photo-box'); if(pb){ pb.classList.remove('filled'); }
-  const big=$('#photo-big'), tip=$('#photo-tip'), btn=$('#ob-scan-btn'), name=$('#pet-name'), img=$('#photo-img');
-  if(big){ big.style.display=''; big.textContent='🐶'; }
-  if(img) img.style.display='none';
+  const tip=$('#photo-tip'), btn=$('#ob-scan-btn'), name=$('#pet-name');
   if(tip) tip.textContent='点击下方按钮选择照片';
   if(btn) btn.disabled=true;
   if(name) name.value='豆豆';
@@ -1979,10 +2046,8 @@ function showOb(name){
   const sc=$('#onboard-scroll'); if(sc) sc.scrollTop=0;
 }
 function pickPhoto(){
-  const pb=$('#photo-box'), big=$('#photo-big'), tip=$('#photo-tip'), btn=$('#ob-scan-btn'), img=$('#photo-img');
+  const pb=$('#photo-box'), tip=$('#photo-tip'), btn=$('#ob-scan-btn');
   if(pb) pb.classList.add('filled');
-  if(img) img.style.display='block';
-  if(big) big.style.display='none';
   if(tip) tip.textContent='照片已就绪 ✓';
   if(btn) btn.disabled=false;
 }
@@ -2011,7 +2076,6 @@ function obGen(){
   if(bar) bar.style.width='0%';
   if(doneBtn) doneBtn.style.display='none';
   if(stepText) stepText.textContent='重建数字角色…';
-  if(emoji) emoji.textContent='🎬';
   setStep('#gen-s1','done'); setStep('#gen-s2','now'); setStep('#gen-s3',''); setStep('#gen-s4','');
   obTimers.push(setTimeout(()=>{
     if($('#gen-bar')) $('#gen-bar').style.width='38%';
@@ -2027,7 +2091,6 @@ function obGen(){
     if($('#gen-bar')) $('#gen-bar').style.width='100%';
     if($('#gen-step-text')) $('#gen-step-text').textContent='渲染合成完成 ✓';
     setStep('#gen-s4','done');
-    if($('#gen-emoji')) $('#gen-emoji').textContent='🐶';
     if($('#gen-done-btn')) $('#gen-done-btn').style.display='block';
   },3400));
 }
@@ -2037,7 +2100,7 @@ function finishOnboard(){
   const empty=$('#pet-empty'), filled=$('#pet-filled');
   if(empty) empty.style.display='none';
   if(filled) filled.style.display='flex';
-  toast('豆豆的数字身份已创建 🎉');
+  toast('豆豆的数字身份已创建');
 }
 
 let demoInt=null;
@@ -2091,7 +2154,7 @@ function finishAsset(){
   if(gu) gu.style.display='inline-block';
   if(mt) mt.textContent='累计收益 ¥16.36（已上架1件）';
   goTab('market');
-  toast('素材已成为你的个人数字资产 ☁️');
+  toast('素材已成为你的个人数字资产');
 }
 
 function like(btn){
@@ -2122,7 +2185,7 @@ function playVideo(title,emoji,bg,img,owner,dur){
   if($('#play-name')) $('#play-name').textContent=title||'AI宠物影片';
   const pe=$('#play-emoji'), pi=$('#play-img');
   if(pi&&img){ pi.src=img; pi.style.display='block'; if(pe) pe.style.display='none'; }
-  else { if(pi) pi.style.display='none'; if(pe){ pe.style.display=''; pe.textContent=emoji||'🐱'; } }
+  else { if(pi) pi.style.display='none'; if(pe){ pe.style.display=''; } }
   if($('#play-bg')) $('#play-bg').style.background='linear-gradient(135deg,'+(bg||'#FFE3C2,#FFC4A8')+')';
   if($('#play-owner')) $('#play-owner').textContent=owner||'创作者';
   if($('#play-dur')) $('#play-dur').textContent=dur||'00:32';
@@ -2156,13 +2219,13 @@ function saveRecord(){
   if(tl){
     const item=document.createElement('div');
     item.className='tl-item g';
-    item.innerHTML='<div class="tl-date">'+esc(date)+'</div><div class="tl-box"><b>📝 '+esc(title)+'</b><p>'+esc(text)+'</p></div>';
+    item.innerHTML='<div class="tl-date">'+esc(date)+'</div><div class="tl-box"><b><svg class="ic" style="width:13px;height:13px;vertical-align:-2px;color:var(--brand1);margin-right:3px"><use href="#ic-pencil"/></svg>'+esc(title)+'</b><p>'+esc(text)+'</p></div>';
     tl.prepend(item);
   }
   if($('#rec-title')) $('#rec-title').value='';
   if($('#rec-text')) $('#rec-text').value='';
   closeOv('ov-record');
-  toast('已保存到成长档案 ✅');
+  toast('已保存到成长档案');
 }
 function shareTo(){ toast('已分享（演示）'); }
 
