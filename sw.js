@@ -1,4 +1,4 @@
-const VERSION = "aipet-v7";
+const VERSION = "aipet-v8";
 const CORE = [
   "./",
   "./index.html",
@@ -34,6 +34,29 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
+
+  // 视频等媒体直接交给浏览器处理（分段请求不能被缓存干扰）
+  const url = req.url;
+  if (req.destination === "video" || req.destination === "audio" || /\.(mp4|mov|webm|m4v)(\?|$)/i.test(url)) {
+    return;
+  }
+
+  // 页面请求网络优先，保证每次发布后用户拿到最新版本
+  if (req.mode === "navigate") {
+    e.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(VERSION).then((c) => c.put("./index.html", copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match("./index.html"))
+    );
+    return;
+  }
+
   e.respondWith(
     caches.match(req, { ignoreSearch: true }).then((hit) => {
       if (hit) return hit;
