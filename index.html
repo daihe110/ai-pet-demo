@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>浪动宠物 · App 交互 Demo</title>
-<meta name="description" content="和任何宠物一起看电影 · 浪动宠物 App 交互原型">
+<title>浪仔 · App 交互 Demo</title>
+<meta name="description" content="和任何宠物一起看电影 · 浪仔 App 交互原型">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="theme-color" content="#0B1E19">
@@ -356,7 +356,7 @@ input,textarea{font-family:inherit;border:none;outline:none;background:none;colo
 }
 .idcard::before{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,157,90,.5),transparent 65%)}
-.idcard::after{content:"浪动";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-24deg);
+.idcard::after{content:"浪仔";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-24deg);
   font-size:70px;font-weight:900;color:rgba(255,255,255,.05);letter-spacing:6px}
 .id-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
 .id-brand{display:flex;align-items:center;gap:8px}
@@ -565,7 +565,7 @@ img{max-width:100%}
 }
 </style>
 <style>
-/* ===== 浪动宠物 · 绿幕影院主题 ===== */
+/* ===== 浪仔 · 绿幕影院主题 ===== */
 :root{
   --brand1:#009E7C; --brand2:#FF5A4E; --ink:#16231E; --muted:#667870;
   --bg:#F3F7F4; --bg2:#E9F1ED; --card:#FFFFFF; --line:#DCE7E1;
@@ -1225,7 +1225,7 @@ body.cut .stage-note{display:none}
       <!-- ============ 我的 ============ -->
       <section class="screen" id="screen-me">
         <div class="topbar">
-          <div class="loc"><svg class="ic" style="width:15px;height:15px;color:var(--brand1)"><use href="#ic-user"/></svg>我的 <span>浪动号 LD·000123</span></div>
+          <div class="loc"><svg class="ic" style="width:15px;height:15px;color:var(--brand1)"><use href="#ic-user"/></svg>我的 <span>浪仔号 LD·000123</span></div>
           <div class="iconbtn" onclick="openOv('ov-about')">ⓘ</div>
         </div>
 
@@ -1430,13 +1430,13 @@ body.cut .stage-note{display:none}
             <div class="ob-title">你的 AI 宠物视频已生成</div>
             <p class="ob-sub">豆豆的数字角色影片 · 可播放、可分享、可上传云市场成为个人资产。</p>
             <div class="player" style="margin-top:22px" id="ob-player">
-              <div class="pl-bg"><span class="glow"></span><video id="demo-video" class="photo-img" src="assets/videos/video-1.mp4" poster="assets/pets/doudou.jpg" playsinline preload="none"></video></div>
+              <div class="pl-bg"><span class="glow"></span><video id="demo-video" class="photo-img" src="assets/videos/video-free.mp4" poster="assets/pets/doudou.jpg" playsinline preload="none"></video></div>
               <button class="pl-play" onclick="playDemo()">▶</button>
               <div class="pl-bottom">
                 <div class="pl-title">豆豆的夏日首映</div>
-                <div class="pl-sub">AI数字角色影片 · 高清 1080P</div>
+                <div class="pl-sub">AI数字角色影片 · 高清</div>
                 <div class="pl-track"><i id="demo-bar"></i></div>
-                <div class="pl-time"><span id="demo-cur">00:00</span><span>00:47</span></div>
+                <div class="pl-time"><span id="demo-cur">00:00</span><span>02:06</span></div>
               </div>
             </div>
             <div class="chipline" style="margin-top:14px">
@@ -1537,7 +1537,7 @@ body.cut .stage-note{display:none}
       <div class="overlay ov-dark" id="ov-cinema">
         <div class="cinema-top">
           <button class="back" onclick="closeOv('ov-cinema')">←</button>
-          <span>浪动影院 · 和任何宠物一起看电影</span>
+          <span>浪仔影院 · 和任何宠物一起看电影</span>
           <button class="back" onclick="openOv('ov-share')"><svg class="ic" style="width:16px;height:16px"><use href="#ic-share"/></svg></button>
         </div>
         <div class="ov-scroll" style="padding-top:0">
@@ -1611,7 +1611,7 @@ body.cut .stage-note{display:none}
               <div class="id-top">
                 <div class="id-brand">
                   <div class="id-logo"><svg class="ic"><use href="#ic-paw"/></svg></div>
-                  <div><b>浪动宠物</b><span>LANGDONG PET · 数字身份中心</span></div>
+                  <div><b>浪仔</b><span>LANGZAI PET · 数字身份中心</span></div>
                 </div>
                 <span class="id-title">宠物数字身份证</span>
               </div>
@@ -1655,7 +1655,7 @@ body.cut .stage-note{display:none}
         </div>
         <div class="ov-scroll">
           <div class="member-hero">
-            <h4><svg class="ic" style="width:16px;height:16px;color:var(--gold);margin-right:5px"><use href="#ic-member"/></svg>浪动数字会员</h4>
+            <h4><svg class="ic" style="width:16px;height:16px;color:var(--gold);margin-right:5px"><use href="#ic-member"/></svg>浪仔数字会员</h4>
             <p>记录成长 + 专业养宠指导 + 医院服务 + 生活权益 + 城市活动资格</p>
             <span class="chip gold" style="margin-top:9px">当前：免费体验版 · 立即升级</span>
           </div>
@@ -2000,7 +2000,7 @@ body.cut .stage-note{display:none}
     </div>
   </div>
   <div class="stage-note">
-    这是<b>浪动宠物 App</b> 的交互原型 Demo。点击<b>「上传照片 · 免费生成AI视频」</b>体验完整新用户流程；首页所有服务均可点击进入详情页；底部导航切换云市场 / 成长 / 我的。
+    这是<b>浪仔 App</b> 的交互原型 Demo。点击<b>「上传照片 · 免费生成AI视频」</b>体验完整新用户流程；首页所有服务均可点击进入详情页；底部导航切换云市场 / 成长 / 我的。
   </div>
 </div>
 <div class="toast" id="toast"></div>

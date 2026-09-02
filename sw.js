@@ -1,4 +1,4 @@
-const VERSION = "aipet-v9";
+const VERSION = "aipet-v10";
 const CORE = [
   "./",
   "./index.html",
@@ -11,9 +11,7 @@ const CORE = [
   "./assets/pets/cat-mili.jpg",
   "./assets/pets/dog-wangcai.jpg",
   "./assets/pets/cat-new1.jpg",
-  "./assets/pets/cat-new2.jpg",
   "./assets/videos/naicha-poster.jpg",
-  "./assets/user/person-2.jpg",
   "./assets/user/me-avatar-sm.jpg"
 ];
 
