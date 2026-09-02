@@ -1,4 +1,4 @@
-const VERSION = "aipet-v10";
+const VERSION = "aipet-v11";
 const CORE = [
   "./",
   "./index.html",
@@ -32,6 +32,9 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
+
+  // sw.js 永远走网络，避免旧版本把自身缓存导致永远无法更新
+  if (/sw\.js(\?|$)/i.test(req.url)) return;
 
   // 视频等媒体直接交给浏览器处理（分段请求不能被缓存干扰）
   const url = req.url;
